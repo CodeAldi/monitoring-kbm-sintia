@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('nomor_induk')->unique();
             $table->string('email')->unique();
             $table->string('password');
+            $table->enum('role', ['admin', 'wakil kurikulum', 'guru mapel', 'guru piket', 'siswa'])->default('siswa');
+            // Admin => 'admin', WakilKurikulum => 'wakil kurikulum', GuruMapel => 'guru mapel', GuruPiket => 'guru piket', Siswa => 'siswa',
             $table->rememberToken();
             $table->timestamps();
         });
