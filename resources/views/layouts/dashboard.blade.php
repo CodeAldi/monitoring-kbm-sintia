@@ -83,7 +83,7 @@
 
             <div class="container-fluid flex-grow-1 container-p-y">
               <!-- Content Container-fluid -->
-              @include('sweetalert::alert')
+              {{-- @include('sweetalert::alert') --}}
               @yield('content')
               <!--/ Content Container-fluid -->
             </div>

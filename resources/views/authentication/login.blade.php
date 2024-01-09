@@ -30,13 +30,13 @@
                     <form id="formAuthentication" class="mb-3" action="{{ route('authenticate') }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="email" name="email"
+                            <label for="email" class="form-label">NIS / NIP</label>
+                            <input type="text" class="form-control @error('nomor_induk') invalid @enderror" id="email" name="nomor_induk"
                                 placeholder="Enter your email" autofocus required />
                         </div>
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
-                                <label class="form-label" for="password">Password</label>
+                                <label class="form-label @error('nomor_induk') invalid @enderror" for="password">Password</label>
                                 <a href="auth-forgot-password-basic.html">
                                     <small>Forgot Password?</small>
                                 </a>

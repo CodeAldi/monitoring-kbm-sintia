@@ -23,10 +23,10 @@
             </a>
         </li>
 
-        @if (Auth()->user()->hasRole('admin'))
+        {{-- @if (Auth()->user()->hasRole('admin')) --}}
         
         {{--! data master !--}}
-        <li class="menu-header small text-uppercase">
+        {{-- <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Data Master KBM</span>
         </li>
         <li class="menu-item {{ (Request::RouteIs('admin.mapel.*')) ? 'active' : '' }}">
@@ -46,10 +46,10 @@
                 <i class='menu-icon bx bx-group'></i>
                 Kelas
             </a>
-        </li>
+        </li> --}}
         {{-- /.data master --}}
         {{--! data master user !--}}
-        <li class="menu-header small text-uppercase">
+        {{-- <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Data Master Users</span>
         </li>
         <li class="menu-item {{ (Request::RouteIs('admin.guru.*')) ? 'active' : '' }}">
@@ -69,9 +69,9 @@
                 </svg>
                 Siswa
             </a>
-        </li>
+        </li> --}}
         {{-- /.data master user --}}
-        @elseif(Auth()->user()->hasRole('wakil kurikulum'))
+        {{-- @elseif(Auth()->user()->hasRole('wakil kurikulum'))
         
         @elseif(Auth()->user()->hasRole('guru mapel'))
         <li class="menu-item">
@@ -85,9 +85,9 @@
                 <i class='menu-icon bx bx-badge-check'></i>
                 Absensi Guru
             </a>
-        </li>
+        </li> --}}
         {{-- KBM --}}
-        <li class="menu-header small text-uppercase">
+        {{-- <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Kegiatan Belajar Mengajar</span>
         </li>
         <li class="menu-item">
@@ -107,10 +107,10 @@
                 <i class='menu-icon bx bx-check-square'></i>
                 Lapor Proses KBM
             </a>
-        </li>
+        </li> --}}
         {{-- /.KBM --}}
         
-        @elseif(Auth()->user()->hasRole('guru piket'))
+        {{-- @elseif(Auth()->user()->hasRole('guru piket'))
         <li class="menu-item">
             <a href="{{ route('piket.mengajar') }}" class="menu-link">
                 <i class='menu-icon bx bx-arrow-back'></i>
@@ -125,7 +125,7 @@
         </li>
         
         @elseif(Auth()->user()->hasRole('siswa'))
-        @endif
+        @endif --}}
         {{-- <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Text menu divider</span>
         </li> --}}
