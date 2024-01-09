@@ -11,10 +11,11 @@ class AuthenticationController extends Controller
     function index() {
         return view('authentication.login')->with('title','login');
     }
+
     public function authenticate(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'nomor_induk' => ['required'],
             'password' => ['required'],
         ]);
 
@@ -25,7 +26,17 @@ class AuthenticationController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+            'nomor_induk' => 'The provided credentials do not match our records.',
+        ])->onlyInput('nomor_induk');
+    }
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
