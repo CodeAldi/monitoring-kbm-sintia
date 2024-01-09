@@ -2,7 +2,7 @@
     <div class="app-brand demo">
         <a href="#" class="app-brand-link">
             <span class="app-brand-logo demo">
-                {{--  --}}
+                {{-- --}}
             </span>
             <span class="app-brand-text demo menu-text fw-bolder ms-2">Monitoring KBM</span>
         </a>
@@ -23,56 +23,65 @@
             </a>
         </li>
 
-        {{-- @if (Auth()->user()->hasRole('admin')) --}}
-        
+        @if (Auth()->user()->hasRole('admin'))
+
         {{--! data master !--}}
-        {{-- <li class="menu-header small text-uppercase">
+        <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Data Master KBM</span>
         </li>
-        <li class="menu-item {{ (Request::RouteIs('admin.mapel.*')) ? 'active' : '' }}">
-            <a href="{{ route('admin.mapel.index') }}" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('mapel.*')) ? 'active' : '' }}">
+            <a href="{{ route('mapel.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-book-reader'></i>
                 Mata Pelajaran
             </a>
         </li>
-        <li class="menu-item {{ (Request::RouteIs('admin.jurusan.*')) ? 'active' : '' }}">
-            <a href="{{ route('admin.jurusan.index') }}" class="menu-link">
-                <i class='menu-icon bx bx-layer'></i>
-                Jurusan
-            </a>
+        {{-- <li class="menu-item {{ (Request::RouteIs('admin.jurusan.*')) ? 'active' : '' }}"> --}}
+        <li class="menu-item ">
+            {{-- <a href="{{ route('admin.jurusan.index') }}" class="menu-link"> --}}
+                <a href="#" class="menu-link">
+                    <i class='menu-icon bx bx-layer'></i>
+                    Jurusan
+                </a>
         </li>
-        <li class="menu-item {{ (Request::RouteIs('admin.kelas.*')) ? 'active' : '' }}">
-            <a href="{{ route('admin.kelas.index') }}" class="menu-link">
-                <i class='menu-icon bx bx-group'></i>
-                Kelas
-            </a>
-        </li> --}}
+        {{-- <li class="menu-item {{ (Request::RouteIs('admin.kelas.*')) ? 'active' : '' }}"> --}}
+        <li class="menu-item">
+            {{-- <a href="{{ route('admin.kelas.index') }}" class="menu-link"> --}}
+                <a href="#" class="menu-link">
+                    <i class='menu-icon bx bx-group'></i>
+                    Kelas
+                </a>
+        </li>
         {{-- /.data master --}}
         {{--! data master user !--}}
-        {{-- <li class="menu-header small text-uppercase">
+        <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Data Master Users</span>
         </li>
-        <li class="menu-item {{ (Request::RouteIs('admin.guru.*')) ? 'active' : '' }}">
-            <a href="{{ route('admin.guru.index') }}" class="menu-link">
-                <i class='menu-icon bx bx-user'></i>
-                Guru
-            </a>
+        {{-- <li class="menu-item {{ (Request::RouteIs('admin.guru.*')) ? 'active' : '' }}"> --}}
+        <li class="menu-item ">
+            {{-- <a href="{{ route('admin.guru.index') }}" class="menu-link"> --}}
+                <a href="#" class="menu-link">
+                    <i class='menu-icon bx bx-user'></i>
+                    Guru
+                </a>
         </li>
-        <li class="menu-item disabled {{ (Request::RouteIs('admin.siswa.*')) ? 'active' : '' }}">
-            <a href="{{ route('admin.siswa.index') }}" class="menu-link">
-                <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon" width="24" height="24" viewBox="0 0 24 24"
-                    style="fill: rgb(140,153,167);transform: ;msFilter:;">
-                    <circle cx="6" cy="4" r="2"></circle>
-                    <path d="M9 7H3a1 1 0 0 0-1 1v7h2v7h4v-7h2V8a1 1 0 0 0-1-1z"></path>
-                    <circle cx="17" cy="4" r="2"></circle>
-                    <path d="M20.21 7.73a1 1 0 0 0-1-.73h-4.5a1 1 0 0 0-1 .73L12 14h2l-1 4h2v4h4v-4h2l-1-4h2z"></path>
-                </svg>
-                Siswa
-            </a>
-        </li> --}}
+        {{-- <li class="menu-item disabled {{ (Request::RouteIs('admin.siswa.*')) ? 'active' : '' }}"> --}}
+        <li class="menu-item disabled ">
+            {{-- <a href="{{ route('admin.siswa.index') }}" class="menu-link"> --}}
+                <a href="#" class="menu-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon" width="24" height="24" viewBox="0 0 24 24"
+                        style="fill: rgb(140,153,167);transform: ;msFilter:;">
+                        <circle cx="6" cy="4" r="2"></circle>
+                        <path d="M9 7H3a1 1 0 0 0-1 1v7h2v7h4v-7h2V8a1 1 0 0 0-1-1z"></path>
+                        <circle cx="17" cy="4" r="2"></circle>
+                        <path d="M20.21 7.73a1 1 0 0 0-1-.73h-4.5a1 1 0 0 0-1 .73L12 14h2l-1 4h2v4h4v-4h2l-1-4h2z">
+                        </path>
+                    </svg>
+                    Siswa
+                </a>
+        </li>
         {{-- /.data master user --}}
-        {{-- @elseif(Auth()->user()->hasRole('wakil kurikulum'))
-        
+        @elseif(Auth()->user()->hasRole('wakil kurikulum'))
+
         @elseif(Auth()->user()->hasRole('guru mapel'))
         <li class="menu-item">
             <a href="{{ route('gmapel.piket') }}" class="menu-link">
@@ -85,9 +94,9 @@
                 <i class='menu-icon bx bx-badge-check'></i>
                 Absensi Guru
             </a>
-        </li> --}}
+        </li>
         {{-- KBM --}}
-        {{-- <li class="menu-header small text-uppercase">
+        <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Kegiatan Belajar Mengajar</span>
         </li>
         <li class="menu-item">
@@ -107,10 +116,10 @@
                 <i class='menu-icon bx bx-check-square'></i>
                 Lapor Proses KBM
             </a>
-        </li> --}}
+        </li>
         {{-- /.KBM --}}
-        
-        {{-- @elseif(Auth()->user()->hasRole('guru piket'))
+
+        @elseif(Auth()->user()->hasRole('guru piket'))
         <li class="menu-item">
             <a href="{{ route('piket.mengajar') }}" class="menu-link">
                 <i class='menu-icon bx bx-arrow-back'></i>
@@ -123,9 +132,9 @@
                 Pantau Proses KBM
             </a>
         </li>
-        
+
         @elseif(Auth()->user()->hasRole('siswa'))
-        @endif --}}
+        @endif
         {{-- <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Text menu divider</span>
         </li> --}}

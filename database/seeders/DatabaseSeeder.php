@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Enums\UserRole;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,6 +21,7 @@ class DatabaseSeeder extends Seeder
             'nomor_induk' => '123',
             'email' => 'test@example.com',
             'password' => bcrypt('testuser'),
+            'role' => UserRole::Admin,
         ]);
     }
 }
