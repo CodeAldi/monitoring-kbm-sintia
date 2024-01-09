@@ -35,13 +35,11 @@
                 Mata Pelajaran
             </a>
         </li>
-        {{-- <li class="menu-item {{ (Request::RouteIs('admin.jurusan.*')) ? 'active' : '' }}"> --}}
-        <li class="menu-item ">
-            {{-- <a href="{{ route('admin.jurusan.index') }}" class="menu-link"> --}}
-                <a href="#" class="menu-link">
-                    <i class='menu-icon bx bx-layer'></i>
-                    Jurusan
-                </a>
+        <li class="menu-item {{ (Request::RouteIs('jurusan.*')) ? 'active' : '' }}">
+            <a href="{{ route('jurusan.index') }}" class="menu-link">
+                <i class='menu-icon bx bx-layer'></i>
+                Jurusan
+            </a>
         </li>
         {{-- <li class="menu-item {{ (Request::RouteIs('admin.kelas.*')) ? 'active' : '' }}"> --}}
         <li class="menu-item">

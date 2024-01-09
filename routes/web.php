@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\MapelController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,8 @@ Route::controller(AuthenticationController::class)->group(function(){
     Route::post('/logout', 'logout')->middleware('auth')->name('logout');
 });
 Route::controller(MapelController::class)->group(function(){
-    Route::get('/data-master/mata-pelajaran','index')->name('mapel.index');
+    Route::get('/data-master/mata-pelajaran/index','index')->name('mapel.index');
+})->middleware('auth');
+Route::controller(JurusanController::class)->group(function(){
+    Route::get('data-master/jurusan/index','index')->name('jurusan.index');
 })->middleware('auth');
