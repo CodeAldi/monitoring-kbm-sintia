@@ -17,7 +17,7 @@
         </div> --}}
         <!-- /Search -->
         <div class="navbar-nav text-capitalize">
-            {{-- Login Sebagai : {{ Auth()->user()->role }} --}}
+            Login Sebagai : {{ Auth()->user()->role }}
         </div>
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <!-- Place this tag where you want the button to render. -->
