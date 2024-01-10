@@ -27,7 +27,8 @@ Route::controller(AuthenticationController::class)->group(function(){
     Route::post('/logout', 'logout')->middleware('auth')->name('logout');
 });
 Route::controller(MapelController::class)->group(function(){
-    Route::get('/data-master/mata-pelajaran/index','index')->name('mapel.index');
+    Route::get('data-master/mata-pelajaran/index','index')->name('mapel.index');
+    Route::post('data-master/mata-pelajaran/store','store')->name('mapel.store');
 })->middleware('auth');
 Route::controller(JurusanController::class)->group(function(){
     Route::get('data-master/jurusan/index','index')->name('jurusan.index');
