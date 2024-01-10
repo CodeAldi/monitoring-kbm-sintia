@@ -32,7 +32,7 @@
                         <div class="mb-3">
                             <label for="email" class="form-label">NIS / NIP</label>
                             <input type="text" class="form-control @error('nomor_induk') invalid @enderror" id="email" name="nomor_induk"
-                                placeholder="Enter your email" autofocus required />
+                                placeholder="masukan NIS atau NIP anda " autofocus required />
                         </div>
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
