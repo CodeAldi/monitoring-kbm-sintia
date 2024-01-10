@@ -22,4 +22,8 @@ class MapelController extends Controller
         $mapel->save();
         return back();
     }
+    function destroy(Mapel $mapel) {
+        $mapel->delete();
+        return back();
+    }
 }

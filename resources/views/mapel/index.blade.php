@@ -35,8 +35,13 @@
                                     <a class="dropdown-item" href="javascript:void(0);"><i
                                             class="bx bx-edit-alt me-1"></i>
                                         Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
+                                    <form action="{{ route('mapel.destroy',['mapel'=>$item]) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="dropdown-item" href="javascript:void(0);"><i
+                                                class="bx bx-trash me-1"></i>
+                                            Delete</button>
+                                    </form>
                                 </div>
                             </div>
                         </td>
@@ -65,15 +70,15 @@
                 <div class="row">
                     <div class="col mb-3">
                         <label for="nama_mapel" class="form-label">Nama Mata Pelajaran</label>
-                        <input type="text" id="nama_mapel" class="form-control"
-                            name="nama_mapel" placeholder="masukan nama mapel" autofocus required />
+                        <input type="text" id="nama_mapel" class="form-control" name="nama_mapel"
+                            placeholder="masukan nama mapel" autofocus required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-3">
                         <label for="kode_mapel" class="form-label">Kode / singkatan Mapel</label>
-                        <input type="text" id="kode_mapel" class="form-control"
-                            name="kode_mapel" placeholder="masukan kode atau singkatan mapel" required />
+                        <input type="text" id="kode_mapel" class="form-control" name="kode_mapel"
+                            placeholder="masukan kode atau singkatan mapel" required />
                     </div>
                 </div>
             </div>
