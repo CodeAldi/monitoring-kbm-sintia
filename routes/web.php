@@ -29,6 +29,7 @@ Route::controller(AuthenticationController::class)->group(function(){
 Route::controller(MapelController::class)->group(function(){
     Route::get('data-master/mata-pelajaran/index','index')->name('mapel.index');
     Route::post('data-master/mata-pelajaran/store','store')->name('mapel.store');
+    Route::put('data-master/mata-pelajaran/{mapel}/update','update')->name('mapel.update');
     Route::delete('data-master/mata-pelajaran/{mapel}/destroy','destroy')->name('mapel.destroy');
 })->middleware('auth');
 Route::controller(JurusanController::class)->group(function(){
