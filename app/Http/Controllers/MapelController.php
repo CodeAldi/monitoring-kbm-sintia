@@ -9,4 +9,7 @@ class MapelController extends Controller
     function index() {
         return view('mapel.index')->with('title','Data Master Mata Pelajaran');
     }
+    function store(Request $request) {
+        
+    }
 }
