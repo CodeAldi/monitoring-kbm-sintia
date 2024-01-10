@@ -41,13 +41,11 @@
                 Jurusan
             </a>
         </li>
-        {{-- <li class="menu-item {{ (Request::RouteIs('admin.kelas.*')) ? 'active' : '' }}"> --}}
-        <li class="menu-item">
-            {{-- <a href="{{ route('admin.kelas.index') }}" class="menu-link"> --}}
-                <a href="#" class="menu-link">
-                    <i class='menu-icon bx bx-group'></i>
-                    Kelas
-                </a>
+        <li class="menu-item {{ (Request::RouteIs('kelas.*')) ? 'active' : '' }}">
+            <a href="{{ route('kelas.index') }}" class="menu-link">
+                <i class='menu-icon bx bx-group'></i>
+                Kelas
+            </a>
         </li>
         {{-- /.data master --}}
         {{--! data master user !--}}

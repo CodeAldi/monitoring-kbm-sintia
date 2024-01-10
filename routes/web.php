@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +31,7 @@ Route::controller(MapelController::class)->group(function(){
 })->middleware('auth');
 Route::controller(JurusanController::class)->group(function(){
     Route::get('data-master/jurusan/index','index')->name('jurusan.index');
+})->middleware('auth');
+Route::controller(KelasController::class)->group(function(){
+    Route::get('data-master/kelas/index','index')->name('kelas.index');
 })->middleware('auth');
