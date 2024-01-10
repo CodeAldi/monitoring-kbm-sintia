@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Mapel extends Model
 {
     use HasFactory;
+    protected $table = 'mapel';
+    protected $guarded = ['id'];
 }
