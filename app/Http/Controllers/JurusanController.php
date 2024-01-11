@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class JurusanController extends Controller
 {
     function index() {
-        $jurusan = Jurusan::all();
+        $jurusan = Jurusan::latest()->get();
         return view('jurusan.index')->with('title','Data Master Jurusan')->with('jurusan',$jurusan);
     }
     function store(Request $request) {
