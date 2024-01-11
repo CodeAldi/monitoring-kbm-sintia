@@ -34,6 +34,9 @@ Route::controller(MapelController::class)->group(function(){
 })->middleware('auth');
 Route::controller(JurusanController::class)->group(function(){
     Route::get('data-master/jurusan/index','index')->name('jurusan.index');
+    Route::post('data-master/jurusan/store', 'store')->name('jurusan.store');
+    Route::put('data-master/jurusan/{jurusan}/update', 'update')->name('jurusan.update');
+    Route::delete('data-master/jurusan/{jurusan}/destroy', 'destroy')->name('jurusan.destroy');
 })->middleware('auth');
 Route::controller(KelasController::class)->group(function(){
     Route::get('data-master/kelas/index','index')->name('kelas.index');
