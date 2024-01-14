@@ -40,4 +40,7 @@ Route::controller(JurusanController::class)->group(function(){
 })->middleware('auth');
 Route::controller(KelasController::class)->group(function(){
     Route::get('data-master/kelas/index','index')->name('kelas.index');
+    Route::post('data-master/kelas/store', 'store')->name('kelas.store');
+    Route::put('data-master/kelas/{kelas}/update', 'update')->name('kelas.update');
+    Route::delete('data-master/kelas/{kelas}/destroy', 'destroy')->name('kelas.destroy');
 })->middleware('auth');
