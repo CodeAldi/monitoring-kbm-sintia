@@ -52,10 +52,8 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Data Master Users</span>
         </li>
-        {{-- <li class="menu-item {{ (Request::RouteIs('admin.guru.*')) ? 'active' : '' }}"> --}}
-        <li class="menu-item ">
-            {{-- <a href="{{ route('admin.guru.index') }}" class="menu-link"> --}}
-                <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('akun.guru.*')) ? 'active' : '' }}">
+            <a href="{{ route('akun.guru.index') }}" class="menu-link">
                     <i class='menu-icon bx bx-user'></i>
                     Guru
                 </a>

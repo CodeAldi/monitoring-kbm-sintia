@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
+use App\Http\Controllers\UserGuruController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,4 +44,8 @@ Route::controller(KelasController::class)->group(function(){
     Route::post('data-master/kelas/store', 'store')->name('kelas.store');
     Route::put('data-master/kelas/{kelas}/update', 'update')->name('kelas.update');
     Route::delete('data-master/kelas/{kelas}/destroy', 'destroy')->name('kelas.destroy');
+})->middleware('auth');
+Route::controller(UserGuruController::class)->group(function(){
+    Route::get('data-master/akun/guru/index','index')->name('akun.guru.index');
+    Route::post('data-master/akun/guru/store','store')->name('akun.guru.store');
 })->middleware('auth');
