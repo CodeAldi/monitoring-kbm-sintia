@@ -48,4 +48,7 @@ Route::controller(KelasController::class)->group(function(){
 Route::controller(UserGuruController::class)->group(function(){
     Route::get('data-master/akun/guru/index','index')->name('akun.guru.index');
     Route::post('data-master/akun/guru/store','store')->name('akun.guru.store');
+    Route::put('data-master/akun/guru/{guru}/update', 'update')->name('akun.guru.update');
+    Route::delete('data-master/akun/guru/{guru}/destroy', 'destroy')->name('akun.guru.destroy');
+
 })->middleware('auth');

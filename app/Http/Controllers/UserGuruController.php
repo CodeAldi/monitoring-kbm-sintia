@@ -9,9 +9,14 @@ use Illuminate\Http\Request;
 class UserGuruController extends Controller
 {
     function index() {
-        $guruMapel = User::where('role','like',UserRole::GuruMapel)->get();
-        $guruPiket = User::where('role','like',UserRole::GuruMapel)->get();
-        return view('userguru.index')->with('title','Data Master Akun Guru')->with('guruMapel',$guruMapel)->with('guruPiket',$guruPiket);
+        $guruMapel = User::where('role','!=',UserRole::Admin)->get();
+        // $guruPiket = User::where('role','like',UserRole::GuruPiket)->get();
+        // $guru = [$guruMapel,$guruPiket];
+        // dd($guru);
+        return view('userguru.index')->with('title','Data Master Akun Guru')
+        ->with('guruMapel',$guruMapel)
+        // ->with('guruPiket',$guruPiket)
+        ;
     }
     function store(Request $request) {
         $validatedData = $request->validate([
@@ -27,6 +32,20 @@ class UserGuruController extends Controller
         $guru->password = bcrypt($request->password);
         $guru->role = UserRole::GuruMapel;
         $guru->save();
+        return back();
+    }
+    function update(Request $request, User $guru) {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'nomor_induk' => 'required',
+        ]);
+        $guru->name = $request->name;
+        $guru->nomor_induk = $request->nomor_induk;
+        $guru->save();
+        return back();
+    }
+    function destroy(User $guru) {
+        $guru->delete();
         return back();
     }
 }

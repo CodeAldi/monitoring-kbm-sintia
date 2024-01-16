@@ -39,7 +39,7 @@
                                     <a class="dropdown-item" href="#modalUpdate{{ $loop->iteration }}"
                                         data-bs-toggle="modal"><i class="bx bx-edit-alt me-1"></i>
                                         Edit</a>
-                                    <form action="{{ route('mapel.destroy',['mapel'=>$item]) }}" method="post">
+                                    <form action="{{ route('akun.guru.destroy',['guru'=>$item]) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="dropdown-item" href="javascript:void(0);"><i
@@ -110,29 +110,28 @@
 </div>
 <!-- Modal untuk update -->
 @forelse ($guruMapel as $item)
-
 <div class="modal fade" id="modalUpdate{{ $loop->iteration }}" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <form class="modal-content" action="{{ route('mapel.update',['mapel'=>$item]) }}" method="POST">
+        <form class="modal-content" action="{{ route('akun.guru.update',['guru'=>$item]) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="modal-header">
-                <h5 class="modal-title" id="modalUpdateTitle">Update Mata Pelajaran</h5>
+                <h5 class="modal-title" id="modalCreateTitle">Edit Akun Guru</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="nama_mapel" class="form-label">Nama Mata Pelajaran</label>
-                        <input type="text" id="nama_mapel" class="form-control" name="nama_mapel"
-                            value="{{ $item->nama_mapel }}" autofocus required />
+                        <label for="nama" class="form-label">Nama</label>
+                        <input type="text" id="nama" class="form-control" name="name" value="{{ $item->name }}"
+                            autofocus required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="kode_mapel" class="form-label">Kode / singkatan Mapel</label>
-                        <input type="text" id="kode_mapel" class="form-control" name="kode_mapel"
-                            value="{{ $item->kode_mapel }}" required />
+                        <label for="nip" class="form-label">NIP</label>
+                        <input type="text" id="nip" class="form-control" name="nomor_induk"
+                            value="{{ $item->nomor_induk }}" required />
                     </div>
                 </div>
             </div>
