@@ -75,7 +75,24 @@
         </li>
         {{-- /.data master user --}}
         @elseif(Auth()->user()->hasRole('wakil kurikulum'))
-
+        {{--! penjadwalan !--}}
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Scedule</span>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bx-book'></i>
+                Jadwal Mengajar Guru
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bx-clipboard'></i>
+                Jadwal Piket Guru
+            </a>
+        </li>
+        
+        {{-- /.penjadwalan --}}
         @elseif(Auth()->user()->hasRole('guru mapel'))
         <li class="menu-item">
             <a href="{{ route('gmapel.piket') }}" class="menu-link">
