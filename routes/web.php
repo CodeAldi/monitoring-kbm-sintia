@@ -55,4 +55,6 @@ Route::controller(UserGuruController::class)->middleware(['auth', 'role:admin'])
 Route::controller(GuruMapelController::class)->middleware(['auth','role:wakil kurikulum'])->group(function(){
     Route::get('pembagian-tugas-mengajar/guru-mapel/index','index')->name('gurumapel.index');
     Route::post('pembagian-tugas-mengajar/guru-mapel/store','store')->name('gurumapel.store');
+    Route::put('pembagian-tugas-mengajar/guru-mapel/{guruMapel}/update','update')->name('gurumapel.update');
+    Route::delete('pembagian-tugas-mengajar/guru-mapel/{guruMapel}/destroy','destroy')->name('gurumapel.destroy');
 });

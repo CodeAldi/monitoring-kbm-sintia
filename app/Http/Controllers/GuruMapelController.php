@@ -42,27 +42,20 @@ class GuruMapelController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(GuruMapel $guruMapel)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(GuruMapel $guruMapel)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, GuruMapel $guruMapel)
     {
-        //
+        $validatedData = $request->validate([
+            'users_id' => 'required',
+            'mapel_id' => 'required',
+            'kelas_id' => 'required',
+        ]);
+        $guruMapel->users_id = $request->users_id;
+        $guruMapel->mapel_id = $request->mapel_id;
+        $guruMapel->kelas_id = $request->kelas_id;
+        $guruMapel->save();
+        return back();
     }
 
     /**
@@ -70,6 +63,7 @@ class GuruMapelController extends Controller
      */
     public function destroy(GuruMapel $guruMapel)
     {
-        //
+        $guruMapel->delete();
+        return back();
     }
 }
