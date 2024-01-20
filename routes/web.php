@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\GuruMapelController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
@@ -50,4 +51,8 @@ Route::controller(UserGuruController::class)->middleware(['auth', 'role:admin'])
     Route::post('data-master/akun/guru/store','store')->name('akun.guru.store');
     Route::put('data-master/akun/guru/{guru}/update', 'update')->name('akun.guru.update');
     Route::delete('data-master/akun/guru/{guru}/destroy', 'destroy')->name('akun.guru.destroy');
+});
+Route::controller(GuruMapelController::class)->middleware(['auth','role:wakil kurikulum'])->group(function(){
+    Route::get('pembagian-tugas-mengajar/guru-mapel/index','index')->name('gurumapel.index');
+    Route::post('pembagian-tugas-mengajar/guru-mapel/store','store')->name('gurumapel.store');
 });

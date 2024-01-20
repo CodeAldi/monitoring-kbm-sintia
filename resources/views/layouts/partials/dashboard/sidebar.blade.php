@@ -75,9 +75,18 @@
         </li>
         {{-- /.data master user --}}
         @elseif(Auth()->user()->hasRole('wakil kurikulum'))
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Pembagian Tugas Mengajar</span>
+        </li>
+        <li class="menu-item {{ (Request::RouteIs('gurumapel.*')) ? 'active' : '' }}">
+            <a href="{{ route('gurumapel.index') }}" class="menu-link">
+                <i class='menu-icon bx bx-laptop'></i>
+                Guru Mapel
+            </a>
+        </li>
         {{--! penjadwalan !--}}
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Scedule</span>
+            <span class="menu-header-text">Jadwal</span>
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link">
