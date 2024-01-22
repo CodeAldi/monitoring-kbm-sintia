@@ -18,8 +18,8 @@ class KelasController extends Controller
         $validatedData = $request->validate([
             'jurusan_id' => 'required',
             'tingkat_kelas' => 'required',
-            'nama_kelas' => 'required',
-            'kode_kelas' => 'required',
+            'nama_kelas' => 'required|unique:kelas',
+            'kode_kelas' => 'required|unique:kelas',
         ]);
         $kelas = new Kelas();
         $kelas->jurusan_id = $request->jurusan_id;
