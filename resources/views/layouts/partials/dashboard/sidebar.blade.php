@@ -88,10 +88,10 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Jadwal</span>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('jadwalmengajar.*')) ? 'active' : '' }}">
+            <a href="{{ route('jadwalmengajar.pilihkelas') }}" class="menu-link">
                 <i class='menu-icon bx bx-book'></i>
-                Jadwal Mengajar Guru
+                Jadwal Pelajaran
             </a>
         </li>
         <li class="menu-item">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\GuruMapelController;
+use App\Http\Controllers\JadwalMengajarController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
@@ -57,4 +58,9 @@ Route::controller(GuruMapelController::class)->middleware(['auth','role:wakil ku
     Route::post('pembagian-tugas-mengajar/guru-mapel/store','store')->name('gurumapel.store');
     Route::put('pembagian-tugas-mengajar/guru-mapel/{guruMapel}/update','update')->name('gurumapel.update');
     Route::delete('pembagian-tugas-mengajar/guru-mapel/{guruMapel}/destroy','destroy')->name('gurumapel.destroy');
+});
+
+Route::controller(JadwalMengajarController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){
+    Route::get('jadwal-pelajaran/pilih-kelas','pilihkelas')->name('jadwalmengajar.pilihkelas');
+    Route::get('jadwal-pelajaran/{kelas}','index')->name('jadwalmengajar.index');
 });
