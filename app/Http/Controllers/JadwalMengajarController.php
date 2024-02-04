@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EventJadwalMengajar;
 use App\Models\GuruMapel;
 use App\Models\JadwalMengajar;
 use App\Models\Kelas;
@@ -19,7 +20,15 @@ class JadwalMengajarController extends Controller
     public function index($kelas)
     {
         $gurudanmapel = GuruMapel::where('kelas_id',$kelas)->get();
-        return view('jadwalmengajar.index')->with('title','Jadwal Mengajar Guru')->with('gurudanmapel',$gurudanmapel);
+        $data = EventJadwalMengajar::get(['id','title','start','end']);
+        foreach ($data as $key => $value) {
+            $events[] = [
+                'title' => $value->title,
+                'start' => $value->start,
+                'end' => $value->end,
+            ];
+        }
+        return view('jadwalmengajar.index')->with('title','Jadwal Mengajar Guru')->with('gurudanmapel',$gurudanmapel)->with('events',$events);
     }
 
     /**
@@ -35,7 +44,15 @@ class JadwalMengajarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = 'test jadwal kedua';
+        $start = $request->tanggal_awal .'T'.$request->jam_mulai;
+        $end = $request->tanggal_awal .'T'. $request->jam_selesai;
+        $event = new EventJadwalMengajar();
+        $event->title = $title;
+        $event->start = $start;
+        $event->end   = $end;
+        $event->save();
+        return back();
     }
 
     /**

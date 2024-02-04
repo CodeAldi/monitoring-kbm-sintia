@@ -63,4 +63,5 @@ Route::controller(GuruMapelController::class)->middleware(['auth','role:wakil ku
 Route::controller(JadwalMengajarController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){
     Route::get('jadwal-pelajaran/pilih-kelas','pilihkelas')->name('jadwalmengajar.pilihkelas');
     Route::get('jadwal-pelajaran/{kelas}','index')->name('jadwalmengajar.index');
+    Route::post('jadwal-pelajaran/store','store')->name('jadwalmengajar.store');
 });
