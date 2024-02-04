@@ -71,7 +71,8 @@
                         <select name="guru_mapel_id" id="guru_dan_mapel" class="form-select">
                             <option value="#">Pilih Guru Dan Mapel</option>
                             @forelse ($gurudanmapel as $item)
-                            <option value="{{ $item->id }}">{{ $item->user->name }} - {{ $item->mapel->nama_mapel }}</option>
+                            <option value="{{ $item->id }}">{{ $item->user->name }} - {{ $item->mapel->nama_mapel }}
+                            </option>
                             @empty
                             <option class="text-white bg-warning">No Data</option>
                             @endforelse
@@ -81,13 +82,13 @@
                 <div class="row">
                     <div class="col mb-3">
                         <label for="tanggal_mulai" class="form-label">Hari & Tanggal Mulai</label>
-                        <input class="form-control" type="date"  id="tanggal_mulai" name="tanggal_awal" />
+                        <input class="form-control" type="date" id="tanggal_mulai" name="tanggal_awal" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-3">
                         <label for="tanggal_selesai" class="form-label">Hari & Tanggal Selesai</label>
-                        <input class="form-control" type="date"  id="tanggal_selesai" name="tanggal_akhir" />
+                        <input class="form-control" type="date" id="tanggal_selesai" name="tanggal_selesai" />
                     </div>
                 </div>
                 <div class="row">
