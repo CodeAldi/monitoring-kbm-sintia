@@ -21,7 +21,9 @@ class JadwalMengajarController extends Controller
     public function index($kelas)
     {
         $gurudanmapel = GuruMapel::where('kelas_id', $kelas)->get();
-        if (EventJadwalMengajar::exists()) {
+        $jadwalMengajar = JadwalMengajar::where('kelas_id', $kelas)->get();
+        // dd(count($jadwalMengajar));
+        if (count($jadwalMengajar)) {
             $data = EventJadwalMengajar::get(['id', 'title', 'start', 'end']);
             foreach ($data as $key => $value) {
                 $events[] = [
