@@ -24,15 +24,14 @@ class JadwalMengajarController extends Controller
     {
         $gurudanmapel = GuruMapel::where('kelas_id', $kelas)->get();
         $jadwalMengajar = JadwalMengajar::where('kelas_id', $kelas)->get();
-        // dd(count($jadwalMengajar));
+        // dd($jadwalMengajar->event_jadwal_mengajar);
         if (count($jadwalMengajar)) {
-            $data = EventJadwalMengajar::get(['id', 'title', 'start', 'end']);
-            foreach ($data as $key => $value) {
+            foreach ($jadwalMengajar as $value) {
                 $events[] = [
-                    'id' => $value->id,
-                    'title' => $value->title,
-                    'start' => $value->start,
-                    'end' => $value->end,
+                    'id' => $value->event_jadwal_mengajar->id,
+                    'title' => $value->event_jadwal_mengajar->title,
+                    'start' => $value->event_jadwal_mengajar->start,
+                    'end' => $value->event_jadwal_mengajar->end,
                 ];
             }
         } else {
