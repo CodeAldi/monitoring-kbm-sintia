@@ -29,6 +29,7 @@ class JadwalMengajarController extends Controller
             $data = EventJadwalMengajar::get(['id', 'title', 'start', 'end']);
             foreach ($data as $key => $value) {
                 $events[] = [
+                    'id' => $value->id,
                     'title' => $value->title,
                     'start' => $value->start,
                     'end' => $value->end,
@@ -68,7 +69,7 @@ class JadwalMengajarController extends Controller
             $event->start = $start;
             $event->end   = $end;
             $event->save();
-    
+
             $jadwalMengajar = new JadwalMengajar();
             $jadwalMengajar->event_jadwal_mengajar_id = $event->id;
             $jadwalMengajar->guru_mapel_id = $gurudanmapel->id;
@@ -76,7 +77,6 @@ class JadwalMengajarController extends Controller
             $jadwalMengajar->tanggal_mulai = $request->tanggal_awal;
             $jadwalMengajar->tanggal_selesai = $request->tanggal_selesai;
             $jadwalMengajar->save();
-            
         }
         return back();
     }
@@ -108,8 +108,16 @@ class JadwalMengajarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JadwalMengajar $jadwalMengajar)
+    public function destroy(Request $request)
     {
-        //
+        $jadwalMengajarTemp = JadwalMengajar::where('event_jadwal_mengajar_id', $request->event_id)->get();
+        $jadwalMengajar = JadwalMengajar::where('guru_mapel_id', $jadwalMengajarTemp[0]->guru_mapel_id)->get();
+
+        // dd($jadwalMengajar);
+        foreach ($jadwalMengajar as $value) {
+            $value->event_jadwal_mengajar->delete();
+            $value->delete();
+        }
+        return back();
     }
 }

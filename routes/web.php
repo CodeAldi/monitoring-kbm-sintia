@@ -64,4 +64,5 @@ Route::controller(JadwalMengajarController::class)->middleware(['auth', 'role:wa
     Route::get('jadwal-pelajaran/pilih-kelas','pilihkelas')->name('jadwalmengajar.pilihkelas');
     Route::get('jadwal-pelajaran/{kelas}','index')->name('jadwalmengajar.index');
     Route::post('jadwal-pelajaran/store','store')->name('jadwalmengajar.store');
+    Route::post('jadwal-pelajaran/delete','destroy')->name('jadwalmengajar.delete');
 });
