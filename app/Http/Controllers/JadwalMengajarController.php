@@ -22,9 +22,10 @@ class JadwalMengajarController extends Controller
      */
     public function index($kelas)
     {
-        $gurudanmapel = GuruMapel::where('kelas_id', $kelas)->get();
-        $jadwalMengajar = JadwalMengajar::where('kelas_id', $kelas)->get();
-        // dd($jadwalMengajar->event_jadwal_mengajar);
+        $kelas = Kelas::find($kelas);
+        $gurudanmapel = GuruMapel::where('kelas_id', $kelas->id)->get();
+        $jadwalMengajar = JadwalMengajar::where('kelas_id', $kelas->id)->get();
+        // dd($gurudanmapel);
         if (count($jadwalMengajar)) {
             foreach ($jadwalMengajar as $value) {
                 $events[] = [
@@ -37,7 +38,7 @@ class JadwalMengajarController extends Controller
         } else {
             $events[] = [];
         }
-        return view('jadwalmengajar.index')->with('title', 'Jadwal Mengajar Guru')->with('gurudanmapel', $gurudanmapel)->with('events', $events);
+        return view('jadwalmengajar.index')->with('title', 'Jadwal Mengajar Guru')->with('kelas', $kelas)->with('gurudanmapel', $gurudanmapel)->with('events', $events);
     }
 
     /**

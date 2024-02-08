@@ -45,7 +45,7 @@
 <div class="card">
     <div class="card-header d-flex">
         <h5 class="card-title flex-grow-1">
-            Jadwal Pelajaran {{ $gurudanmapel[0]->kelas->nama_kelas }}
+            Jadwal Pelajaran {{ $kelas->nama_kelas }}
         </h5>
         <button type="button" class="btn btn-success" data-bs-toggle="modal"
             data-bs-target="#modalCreate">Tambah</button>
@@ -69,7 +69,7 @@
                 <div class="row">
                     <div class="col mb-3">
                         <input type="text" hidden id="id_kelas" class="form-control" name="id_kelas"
-                            value="{{ $gurudanmapel[0]->kelas->id }}" readonly required />
+                            value="{{ $kelas->id }}" readonly required />
                     </div>
                 </div>
                 <div class="row">
