@@ -94,8 +94,8 @@
                 Jadwal Pelajaran
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('jadwalpiket.*')) ? 'active' : '' }}">
+            <a href="{{ route('jadwalpiket.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-clipboard'></i>
                 Jadwal Piket Guru
             </a>

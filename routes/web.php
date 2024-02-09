@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\GuruMapelController;
 use App\Http\Controllers\JadwalMengajarController;
+use App\Http\Controllers\JadwalPiketGuruController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
@@ -65,4 +66,8 @@ Route::controller(JadwalMengajarController::class)->middleware(['auth', 'role:wa
     Route::get('jadwal-pelajaran/{kelas}','index')->name('jadwalmengajar.index');
     Route::post('jadwal-pelajaran/store','store')->name('jadwalmengajar.store');
     Route::post('jadwal-pelajaran/delete','destroy')->name('jadwalmengajar.delete');
+});
+
+Route::controller(JadwalPiketGuruController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){
+    Route::get('jadwal-piket/index','index')->name('jadwalpiket.index');
 });
