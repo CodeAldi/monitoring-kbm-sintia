@@ -71,4 +71,5 @@ Route::controller(JadwalMengajarController::class)->middleware(['auth', 'role:wa
 Route::controller(JadwalPiketGuruController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){
     Route::get('jadwal-piket/index','index')->name('jadwalpiket.index');
     Route::post('jadwal-piket/store','store')->name('jadwalpiket.store');
+    Route::post('jadwal-piket/delete','destroy')->name('jadwalpiket.delete');
 });

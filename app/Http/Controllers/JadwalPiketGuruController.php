@@ -101,8 +101,15 @@ class JadwalPiketGuruController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JadwalPiketGuru $jadwalPiketGuru)
+    public function destroy(Request $request)
     {
-        //
+        $jadwalPiketGuruTemp = JadwalPiketGuru::where('event_jadwal_piket_guru_id', $request->event_id)->get();
+        $jadwalPiketGuru = JadwalPiketGuru::where('users_id', $jadwalPiketGuruTemp[0]->users_id)->get();
+        // dd($jadwalPiketGuru[0]->event_jadwal_piket_guru);
+        foreach ($jadwalPiketGuru as $value) {
+            $value->event_jadwal_piket_guru->delete();
+            $value->delete();
+        }
+        return back();
     }
 }
