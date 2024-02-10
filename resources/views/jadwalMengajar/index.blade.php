@@ -9,7 +9,7 @@
                 initialView: 'timeGridWeek',
                 locale: 'id',
                 headerToolbar: {
-                    start: 'today prev,next', // will normally be on the left. if RTL, will be on the right
+                    start: 'today prev next', // will normally be on the left. if RTL, will be on the right
                     center: 'title',
                     end: 'timeGridWeek timeGridDay' // will normally be on the right. if RTL, will be on the left
                 },
