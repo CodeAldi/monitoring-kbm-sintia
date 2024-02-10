@@ -14,10 +14,10 @@ class JadwalPiketGuru extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'users_id','id');
     }
-    public function event_jadwal_mengajar(): BelongsTo
+    public function event_jadwal_piket_guru(): BelongsTo
     {
-        return $this->belongsTo(EventJadwalMengajar::class);
+        return $this->belongsTo(EventJadwalPiketGuru::class);
     }
 }

@@ -22,18 +22,17 @@ class JadwalPiketGuruController extends Controller
         if (count($eventPiket)) {
             foreach ($eventPiket as $value) {
                 $events[] = [
-                    'id' => $value->event_jadwal_mengajar->id,
-                    'title' => $value->event_jadwal_mengajar->title,
-                    'start' => $value->event_jadwal_mengajar->start,
-                    'end' => $value->event_jadwal_mengajar->end,
+                    'id' => $value->id,
+                    'title' => $value->title,
+                    'start' => $value->start,
+                    'end' => $value->end,
                 ];
             }
-        }
-        else{
+        } else {
             $events[] = [];
         }
-        
-        return view('jadwalPiket.index')->with('title', 'jadwal piket guru')->with('guru', $guru)->with('events',$events);
+
+        return view('jadwalPiket.index')->with('title', 'jadwal piket guru')->with('guru', $guru)->with('events', $events);
     }
 
     /**
@@ -55,21 +54,22 @@ class JadwalPiketGuruController extends Controller
         $date_range = new DatePeriod($start_date, $interval, $end_date);
         foreach ($date_range as $date) {
             $eventJadwalGuruPiket = new EventJadwalPiketGuru();
-            $start = $date->format('Y-m-d') . 'T07:00:00';
-            $end = $date->format('Y-m-d') . 'T17:00:00';
+            $start = $date->format('Y-m-d');
+            $end = $date->format('Y-m-d');
             $eventJadwalGuruPiket->title = 'kosong';
             $eventJadwalGuruPiket->start = $start;
             $eventJadwalGuruPiket->end = $end;
             $eventJadwalGuruPiket->save();
 
             $jadwalPiketGuru = new JadwalPiketGuru();
-            $jadwalPiketGuru->user_id = $request->user_id;
-            $jadwalPiketGuru->event_jadwal_piket_id = $eventJadwalGuruPiket->id;
+            $jadwalPiketGuru->users_id = $request->user_id;
+            $jadwalPiketGuru->event_jadwal_piket_guru_id = $eventJadwalGuruPiket->id;
             $jadwalPiketGuru->tanggal_mulai = $request->tanggal_mulai;
             $jadwalPiketGuru->tanggal_selesai = $request->tanggal_selesai;
             $jadwalPiketGuru->save();
 
             $eventJadwalGuruPiket->title = $jadwalPiketGuru->user->name;
+            $eventJadwalGuruPiket->save();
         }
         return back();
     }

@@ -6,49 +6,21 @@
     document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'timeGridWeek',
+    initialView: 'dayGridMonth',
     locale: 'id',
     headerToolbar: {
-    start: 'today prev,next', // will normally be on the left. if RTL, will be on the right
+    start: 'today prev next', // will normally be on the left. if RTL, will be on the right
     center: 'title',
-    end: 'timeGridWeek timeGridDay' // will normally be on the right. if RTL, will be on the left
+    end: 'dayGridMonth' // will normally be on the right. if RTL, will be on the left
     },
-    slotMinTime: "07:00:00",
-    slotMaxTime: "17:00:00",
     nowIndicator: true,
-    slotDuration: '00:20:00',
     businessHours: {
     // days of week. an array of zero-based day of week integers (0=Sunday)
     daysOfWeek: [ 1, 2, 3, 4, 5, 6 ], // Monday - Thursday
-    
-    startTime: '07:00', // a start time (10am in this example)
-    endTime: '17:00', // an end time (6pm in this example)
     },
     hiddenDays: [0],
+    defaultAllDay: true,
     events: dataEvent,
-    // events: [
-    // {
-    // title : 'event1',
-    // start : '2024-02-05'
-    // },
-    // {
-    // title : 'event2',
-    // start : '2024-02-05',
-    // end : '2024-02-07'
-    // },
-    // {
-    // title : 'event3',
-    // start : '2024-02-09T12:30:00',
-    // allDay : false // will make the time show
-    // }
-    // ],
-    // events : [
-    //     {
-    //         title : 'contoh 1',
-    //         start : '2024-02-05T07:00:00',
-    //         end : '2024-02-05T17:00:00',
-    //     }
-    // ],
     eventClick: function(info) {
     $('#modalCenter').modal('show');
     var eventId = info.event.id;
@@ -79,7 +51,7 @@
 
 <div class="modal fade" id="modalCreate" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <form class="modal-content" action="{{ route('jadwalmengajar.store') }}" method="POST">
+        <form class="modal-content" action="{{ route('jadwalpiket.store') }}" method="POST">
             @csrf
             <div class="modal-header">
                 <h5 class="modal-title" id="modalCreateTitle">Tambah Jadwal Piket Guru</h5>
@@ -108,7 +80,7 @@
                 <div class="row">
                     <div class="col mb-3">
                         <label for="tanggal_mulai" class="form-label">Hari & Tanggal Mulai</label>
-                        <input class="form-control" type="date" id="tanggal_mulai" name="tanggal_awal" />
+                        <input class="form-control" type="date" id="tanggal_mulai" name="tanggal_mulai" />
                     </div>
                 </div>
                 <div class="row">
