@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruMapelController;
 use App\Http\Controllers\JadwalMengajarController;
 use App\Http\Controllers\JadwalPiketGuruController;
@@ -21,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/dashboard',function(){
-    return view('dashboard.home')->with('title','Dashboard');
-})->middleware('auth')->name('dashboard');
+Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth')->name('dashboard');
 
 Route::controller(AuthenticationController::class)->group(function(){
     Route::get('/','index')->middleware('guest')->name('login');

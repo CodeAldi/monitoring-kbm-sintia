@@ -54,9 +54,9 @@
         </li>
         <li class="menu-item {{ (Request::RouteIs('akun.guru.*')) ? 'active' : '' }}">
             <a href="{{ route('akun.guru.index') }}" class="menu-link">
-                    <i class='menu-icon bx bx-user'></i>
-                    Guru
-                </a>
+                <i class='menu-icon bx bx-user'></i>
+                Guru
+            </a>
         </li>
         {{-- <li class="menu-item disabled {{ (Request::RouteIs('admin.siswa.*')) ? 'active' : '' }}"> --}}
         <li class="menu-item disabled ">
@@ -100,11 +100,26 @@
                 Jadwal Piket Guru
             </a>
         </li>
-        
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Monitoring</span>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bxs-binoculars'></i>
+                Pantau KBM
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bxs-report'></i>
+                Laporan KBM
+            </a>
+        </li>
+
         {{-- /.penjadwalan --}}
         @elseif(Auth()->user()->hasRole('guru mapel'))
         <li class="menu-item">
-            <a href="{{ route('gmapel.piket') }}" class="menu-link">
+            <a href="" class="menu-link">
                 <i class='menu-icon bx bx-bell'></i>
                 Piket
             </a>

@@ -21,4 +21,13 @@ class JadwalMengajar extends Model
     {
         return $this->belongsTo(EventJadwalMengajar::class);
     }
+    /**
+     * Get the kelas that owns the JadwalMengajar
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function kelas(): BelongsTo
+    {
+        return $this->belongsTo(Kelas::class);
+    }
 }

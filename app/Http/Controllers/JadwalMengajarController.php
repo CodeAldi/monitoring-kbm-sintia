@@ -74,7 +74,7 @@ class JadwalMengajarController extends Controller
             $jadwalMengajar->event_jadwal_mengajar_id = $event->id;
             $jadwalMengajar->guru_mapel_id = $gurudanmapel->id;
             $jadwalMengajar->kelas_id = $gurudanmapel->kelas_id;
-            $jadwalMengajar->tanggal_mulai = $request->tanggal_awal;
+            $jadwalMengajar->tanggal_mulai = $date->format('Y-m-d');
             $jadwalMengajar->tanggal_selesai = $request->tanggal_selesai;
             $jadwalMengajar->save();
         }
