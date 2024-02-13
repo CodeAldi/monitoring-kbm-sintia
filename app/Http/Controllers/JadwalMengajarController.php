@@ -54,11 +54,11 @@ class JadwalMengajarController extends Controller
      */
     public function store(Request $request)
     {
-        $interval = new DateInterval('P1W');
+        $interval = new DateInterval('P7DT1M');
         $start_date = date_create($request->tanggal_awal);
         $end_date = date_create($request->tanggal_selesai);
+        $end_date->modify('23 hours');
         $date_range = new DatePeriod($start_date, $interval, $end_date);
-        // dd($date->format('Y-m-d'));
         foreach ($date_range as $date) {
             $gurudanmapel = GuruMapel::find($request->guru_mapel_id);
             $title = $gurudanmapel->mapel->nama_mapel;
@@ -78,6 +78,7 @@ class JadwalMengajarController extends Controller
             $jadwalMengajar->tanggal_selesai = $request->tanggal_selesai;
             $jadwalMengajar->save();
         }
+        // dd($end_date->modify('23 hours'));
         return back();
     }
 

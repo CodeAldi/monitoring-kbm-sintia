@@ -51,6 +51,7 @@ class JadwalPiketGuruController extends Controller
         $interval = new DateInterval('P1W');
         $start_date = date_create($request->tanggal_mulai);
         $end_date = date_create($request->tanggal_selesai);
+        $end_date->modify('23 hours');
         $date_range = new DatePeriod($start_date, $interval, $end_date);
         foreach ($date_range as $date) {
             $eventJadwalGuruPiket = new EventJadwalPiketGuru();
