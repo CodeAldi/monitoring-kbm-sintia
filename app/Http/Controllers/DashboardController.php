@@ -26,9 +26,11 @@ class DashboardController extends Controller
                     }
                 }
             }
-            $sekarangHari = Carbon::parse($jadwalHariIni[0][0]->event_jadwal_mengajar->start)->translatedFormat('l, d F Y');
-            // dd($hariIni);
-            return view('dashboard.home')->with('title', 'Dashboard')->with('jadwalHariIni', $jadwalHariIni)->with('sekarangHari',$sekarangHari);
+            if (!isset($jadwalHariIni)) {
+                $jadwalHariIni = [];
+            }
+            $sekarangHari = Carbon::parse(now())->translatedFormat('l, d F Y');
+            return view('dashboard.home')->with('title', 'Dashboard')->with('jadwalHariIni', $jadwalHariIni)->with('sekarangHari', $sekarangHari);
         } else {
             return view('dashboard.home')->with('title', 'Dashboard');
         }

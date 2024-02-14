@@ -40,7 +40,15 @@
     </div>
     @endforeach
     @empty
-
+    <div class="col-md">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-center">
+                    Tidak Ada Jadwal Mengajar Hari Ini
+                </h5>
+            </div>
+        </div>
+    </div>
     @endforelse
 </div>
 @elseif (Auth()->user()->hasRole('guru piket'))
