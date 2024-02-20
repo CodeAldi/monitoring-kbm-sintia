@@ -77,7 +77,7 @@
                         <select name="tingkat_kelas" id="tingkat_kelas" class="form-select">
                             <option>-- select --</option>
                             <option value="10">X / 10</option>
-                            <option value="11">XII / 11</option>
+                            <option value="11">XI / 11</option>
                             <option value="12">X / 12</option>
                         </select>
                     </div>
