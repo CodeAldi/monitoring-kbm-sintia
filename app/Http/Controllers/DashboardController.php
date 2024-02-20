@@ -32,7 +32,8 @@ class DashboardController extends Controller
             $sekarangHari = Carbon::parse(now())->translatedFormat('l, d F Y');
             return view('dashboard.home')->with('title', 'Dashboard')->with('jadwalHariIni', $jadwalHariIni)->with('sekarangHari', $sekarangHari);
         } else {
-            return view('dashboard.home')->with('title', 'Dashboard');
+            $sekarangHari = Carbon::parse(now())->translatedFormat('l, d F Y');
+            return view('dashboard.home')->with('title', 'Dashboard')->with('sekarangHari', $sekarangHari);
         }
     }
 }
