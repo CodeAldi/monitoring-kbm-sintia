@@ -13,16 +13,23 @@
                     center: 'title',
                     end: 'timeGridWeek timeGridDay' // will normally be on the right. if RTL, will be on the left
                 },
-                slotMinTime: "07:00:00",
-                slotMaxTime: "17:00:00",
+                slotMinTime: "07:30:00",
+                slotMaxTime: "16:00:00",
                 nowIndicator: true,
-                slotDuration: '00:20:00',
+                slotDuration: '00:15:00',
+                slotLabelInterval: '00:45',
+                slotLabelFormat: {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    omitZeroMinute: false,
+                    meridiem: 'short'
+                },
                 businessHours: {
                 // days of week. an array of zero-based day of week integers (0=Sunday)
                 daysOfWeek: [ 1, 2, 3, 4, 5, 6 ], // Monday - Thursday
                 
-                startTime: '07:00', // a start time (10am in this example)
-                endTime: '17:00', // an end time (6pm in this example)
+                startTime: '07:30', // a start time (10am in this example)
+                endTime: '16:00', // an end time (6pm in this example)
                 },
                 hiddenDays: [0],
                 events: dataEvent,
