@@ -8,6 +8,7 @@ use App\Http\Controllers\JadwalPiketGuruController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
+use App\Http\Controllers\RppController;
 use App\Http\Controllers\UserGuruController;
 use Illuminate\Support\Facades\Route;
 
@@ -71,4 +72,9 @@ Route::controller(JadwalPiketGuruController::class)->middleware(['auth', 'role:w
     Route::get('jadwal-piket/index','index')->name('jadwalpiket.index');
     Route::post('jadwal-piket/store','store')->name('jadwalpiket.store');
     Route::post('jadwal-piket/delete','destroy')->name('jadwalpiket.delete');
+});
+
+Route::controller(RppController::class)->middleware(['auth', 'role:guru mapel'])->group(function(){
+    Route::get('rpp/index','index')->name('rpp.index');
+    Route::get('rpp/tingkat-kelas/{tingkatKelas}/create','create')->name('rpp.create');
 });

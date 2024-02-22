@@ -101,7 +101,7 @@
             </a>
         </li>
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Monitoring</span>
+            <span class="menu-header-text">Monitoring KBM</span>
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link">
@@ -119,7 +119,7 @@
         {{-- /.penjadwalan --}}
         @elseif(Auth()->user()->hasRole('guru mapel'))
         <li class="menu-item">
-            <a href="" class="menu-link">
+            <a href="#" class="menu-link">
                 <i class='menu-icon bx bx-bell'></i>
                 Piket
             </a>
@@ -134,8 +134,8 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Kegiatan Belajar Mengajar</span>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('rpp.*')) ? 'active' : '' }}">
+            <a href="{{ route('rpp.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-receipt'></i>
                 RPP
             </a>
