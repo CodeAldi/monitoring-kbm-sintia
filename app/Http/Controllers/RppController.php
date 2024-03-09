@@ -41,8 +41,8 @@ class RppController extends Controller
                 }
             }
         }
-        dd($data);
-        return view('rpp.create')->with('title', 'RPP | Create');
+        // dd($data);
+        return view('rpp.create')->with('title', 'RPP | Create')->with('data',$data);
     }
 
     /**
