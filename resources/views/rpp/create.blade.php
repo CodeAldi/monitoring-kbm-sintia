@@ -10,100 +10,16 @@
 
     </div>
 </div>
-{{-- <div class="row">
-    <div class="col">
-        <div class="nav-align-top mt-3">
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item">
-                    <button type="button" class="nav-link " role="tab" data-bs-toggle="tab"
-                        data-bs-target="#pertemuan-1" aria-controls="pertemuan-1" aria-selected="true">
-                        pertemuan-1
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#pertemuan-3"
-                        aria-controls="pertemuan-3" aria-selected="false">
-                        pertemuan-3
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#pertemuan-4"
-                        aria-controls="pertemuan-4" aria-selected="false">
-                        pertemuan-4
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#pertemuan-5"
-                        aria-controls="pertemuan-5" aria-selected="false">
-                        pertemuan-5
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#pertemuan-6"
-                        aria-controls="pertemuan-6" aria-selected="false">
-                        pertemuan-6
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#pertemuan-7"
-                        aria-controls="pertemuan-7" aria-selected="false">
-                        pertemuan-7
-                    </button>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane fade " id="pertemuan-1" role="tabpanel">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere libero officiis neque ratione a
-                        unde,
-                        molestias minima modi, exercitationem laudantium obcaecati ducimus, debitis distinctio
-                        repudiandae?</p>
-                </div>
-            </div>
-            <div class="tab-content">
-                <div class="tab-pane fade" id="pertemuan-3" role="tabpanel">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere libero officiis neque ratione a
-                        unde,
-                        molestias minima modi, exercitationem laudantium obcaecati ducimus, debitis distinctio
-                        repudiandae?</p>
-                </div>
-            </div>
-            <div class="tab-content">
-                <div class="tab-pane fade" id="pertemuan-4" role="tabpanel">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere libero officiis neque ratione a
-                        unde,
-                        molestias minima modi, exercitationem laudantium obcaecati ducimus, debitis distinctio
-                        repudiandae?</p>
-                </div>
-            </div>
-            <div class="tab-content">
-                <div class="tab-pane fade" id="pertemuan-5" role="tabpanel">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere libero officiis neque ratione a
-                        unde,
-                        molestias minima modi, exercitationem laudantium obcaecati ducimus, debitis distinctio
-                        repudiandae?</p>
-                </div>
-            </div>
-            <div class="tab-content">
-                <div class="tab-pane fade" id="pertemuan-6" role="tabpanel">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere libero officiis neque ratione a
-                        unde,
-                        molestias minima modi, exercitationem laudantium obcaecati ducimus, debitis distinctio
-                        repudiandae?</p>
-                </div>
-            </div>
-            <div class="tab-content">
-                <div class="tab-pane fade" id="pertemuan-7" role="tabpanel">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere libero officiis neque ratione a
-                        unde,
-                        molestias minima modi, exercitationem laudantium obcaecati ducimus, debitis distinctio
-                        repudiandae?</p>
-                </div>
-            </div>
-        </div>
+<div class="row mt-4">
+    <div class="col-6">
+        <a href="#" class="btn btn-success d-block">Tambah</a>
 
     </div>
-</div> --}}
+    <div class="col-6">
+        <a href="#" class="btn btn-danger d-block">Hapus</a>
 
+    </div>
+</div>
 <div class="nav-align-top mt-4">
     <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
