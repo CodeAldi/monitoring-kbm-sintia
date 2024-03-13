@@ -12,11 +12,11 @@
 </div>
 <div class="row mt-4">
     <div class="col-6">
-        <a href="#" class="btn btn-success d-block">Tambah</a>
+        <a class="btn btn-success d-block" data-bs-toggle="modal" href="#modalTambah">Tambah</a>
 
     </div>
     <div class="col-6">
-        <a href="#" class="btn btn-danger d-block">Hapus</a>
+        <a class="btn btn-danger d-block" data-bs-toggle="modal" href="#modalHapus">Hapus</a>
 
     </div>
 </div>
@@ -95,6 +95,80 @@
                 roll icing sesame snaps caramels danish toffee. Brownie biscuit dessert dessert. Pudding jelly
                 jelly-o tart brownie jelly.
             </p>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalTambah" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">Tambah Pertemuan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nameWithTitle" class="form-label">kompetensi Dasar</label>
+                        <textarea id="nameWithTitle" class="form-control"
+                            placeholder="3.10 contoh judul kd&#10;4.10 contoh judul Kd"></textarea>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <label for="emailWithTitle" class="form-label">Tujuan Pembelajaran</label>
+                    <textarea id="emailWithTitle" class="form-control" placeholder="tujuan pembelajaran"></textarea>
+                </div>
+                <div class="col mb-3">
+                    <label for="dobWithTitle" class="form-label">Langkah Langlah Pembelajaran</label>
+                    <textarea id="dobWithTitle" class="form-control" placeholder="tujuan pembelajaran"></textarea>
+                </div>
+                <div class="col mb-3">
+                    <label for="dobWithTitle" class="form-label">Assesmen</label>
+                    <textarea id="dobWithTitle" class="form-control" placeholder="assessmen"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modalHapus" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="nameWithTitle" class="form-label">Name</label>
+                        <input type="text" id="nameWithTitle" class="form-control" placeholder="Enter Name" />
+                    </div>
+                </div>
+                <div class="row g-2">
+                    <div class="col mb-0">
+                        <label for="emailWithTitle" class="form-label">Email</label>
+                        <input type="text" id="emailWithTitle" class="form-control" placeholder="xxxx@xxx.xx" />
+                    </div>
+                    <div class="col mb-0">
+                        <label for="dobWithTitle" class="form-label">DOB</label>
+                        <input type="text" id="dobWithTitle" class="form-control" placeholder="DD / MM / YY" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
         </div>
     </div>
 </div>
