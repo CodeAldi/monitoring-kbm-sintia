@@ -12,11 +12,11 @@
 </div>
 <div class="row mt-4">
     <div class="col-6">
-        <a class="btn btn-success d-block" data-bs-toggle="modal" href="#modalTambah">Tambah</a>
+        <a class="btn btn-success d-block" data-bs-toggle="modal" href="#modalTambah">Tambah Pertemuan</a>
 
     </div>
     <div class="col-6">
-        <a class="btn btn-danger d-block" data-bs-toggle="modal" href="#modalHapus">Hapus</a>
+        <a class="btn btn-danger d-block" data-bs-toggle="modal" href="#modalHapus">Hapus Pertemuan</a>
 
     </div>
 </div>
@@ -117,11 +117,17 @@
                 </div>
                 <div class="col mb-3">
                     <label for="emailWithTitle" class="form-label">Tujuan Pembelajaran</label>
-                    <textarea id="emailWithTitle" class="form-control" placeholder="tujuan pembelajaran"></textarea>
+                    <textarea id="emailWithTitle" class="form-control"
+                        placeholder="isikan tujuan pembelajaran"></textarea>
                 </div>
                 <div class="col mb-3">
                     <label for="dobWithTitle" class="form-label">Langkah Langlah Pembelajaran</label>
-                    <textarea id="dobWithTitle" class="form-control" placeholder="tujuan pembelajaran"></textarea>
+                    <textarea id="dobWithTitle" class="form-control mb-2"
+                        placeholder="langkah pembelajaran bagian [PENDAHULUAN]"></textarea>
+                    <textarea id="dobWithTitle" class="form-control mb-2"
+                        placeholder="langkah pembelajaran bagian [INTI]"></textarea>
+                    <textarea id="dobWithTitle" class="form-control "
+                        placeholder="langkah pembelajaran bagian [PENUTUP]"></textarea>
                 </div>
                 <div class="col mb-3">
                     <label for="dobWithTitle" class="form-label">Assesmen</label>
