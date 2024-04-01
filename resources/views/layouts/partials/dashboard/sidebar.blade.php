@@ -1,10 +1,11 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="#" class="app-brand-link">
-            <span class="app-brand-logo demo">
-                {{-- --}}
-            </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Monitoring KBM</span>
+            {{-- <span class="app-brand-logo demo">
+            </span> --}}
+            <img src="{{ asset('assets/img/favicon/logo.png') }}" alt="" class="app-brand-logo demo" width="50" />
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">Monitoring <br><span
+                    class="text-uppercase">KBM</span> </span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
