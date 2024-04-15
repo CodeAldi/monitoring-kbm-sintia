@@ -12,7 +12,13 @@
         </div>
     </div>
     @empty
-
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">Data masih kosong, silahkan isi data guru mapel terlebih dahulu</p>
+            </div>
+        </div>
+    </div>
     @endforelse
 </div>
 @endsection
