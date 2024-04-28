@@ -112,7 +112,7 @@
                     <div class="col mb-3">
                         <label for="nameWithTitle" class="form-label">kompetensi Dasar</label>
                         <textarea id="nameWithTitle" class="form-control"
-                            placeholder="3.10 contoh judul kd&#10;4.10 contoh judul Kd"></textarea>
+                            placeholder="3.10 judul kd pertama&#10;4.10 judul Kd kedua dan seterusnya"></textarea>
                     </div>
                 </div>
                 <div class="col mb-3">
@@ -123,11 +123,11 @@
                 <div class="col mb-3">
                     <label for="dobWithTitle" class="form-label">Langkah Langlah Pembelajaran</label>
                     <textarea id="dobWithTitle" class="form-control mb-2"
-                        placeholder="langkah pembelajaran bagian [PENDAHULUAN]"></textarea>
+                        placeholder="[PENDAHULUAN]"></textarea>
                     <textarea id="dobWithTitle" class="form-control mb-2"
-                        placeholder="langkah pembelajaran bagian [INTI]"></textarea>
+                        placeholder="[INTI]"></textarea>
                     <textarea id="dobWithTitle" class="form-control "
-                        placeholder="langkah pembelajaran bagian [PENUTUP]"></textarea>
+                        placeholder="[PENUTUP]"></textarea>
                 </div>
                 <div class="col mb-3">
                     <label for="dobWithTitle" class="form-label">Assesmen</label>
