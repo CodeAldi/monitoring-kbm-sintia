@@ -4,7 +4,7 @@
             {{-- <span class="app-brand-logo demo">
             </span> --}}
             <img src="{{ asset('assets/img/favicon/logo.png') }}" alt="" class="app-brand-logo demo" width="50" />
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Monitoring <br><span
+            <span class="app-brand-text demo menu-text fw-bolder ms-2"><span class="text-uppercase">M</span>onitoring <br><span
                     class="text-uppercase">KBM</span> </span>
         </a>
 
