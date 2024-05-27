@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rpp', function (Blueprint $table) {
+        Schema::create('pembagian_rombongan_belajar', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('guru_mapel_id')->constrained('guru_mapel')->cascade('onUpdate')->cascade('onDelete');
-            $table->integer('jumlah_pertemuan');
+            $table->foreignId('siswa_id')->constrained('siswa')->cascade('onUpdate')->cascade('onDelete');
+            $table->foreignId('rombongan_belajar_id')->constrained('rombongan_belajar')->cascade('onUpdate')->cascade('onDelete');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rpp');
+        Schema::dropIfExists('pembagian_rombongan_belajar');
     }
 };

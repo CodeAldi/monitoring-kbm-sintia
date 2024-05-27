@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rpp', function (Blueprint $table) {
+        Schema::create('siswa', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('guru_mapel_id')->constrained('guru_mapel')->cascade('onUpdate')->cascade('onDelete');
-            $table->integer('jumlah_pertemuan');
+            $table->integer('nis')->unique();
+            $table->string('nama');
+            $table->char('jenis_kelamin');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rpp');
+        Schema::dropIfExists('siswa');
     }
 };
