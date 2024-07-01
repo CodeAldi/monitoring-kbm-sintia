@@ -77,4 +77,5 @@ Route::controller(JadwalPiketGuruController::class)->middleware(['auth', 'role:w
 Route::controller(RppController::class)->middleware(['auth', 'role:guru mapel'])->group(function(){
     Route::get('rpp/index','index')->name('rpp.index');
     Route::get('rpp/tingkat-kelas/{tingkatKelas}/create','create')->name('rpp.create');
+    Route::post('rpp/store','store')->name('rpp.store');
 });

@@ -22,27 +22,94 @@
 </div>
 <div class="nav-align-top mt-4">
     <ul class="nav nav-tabs" role="tablist">
+        @forelse ($datarpp as $rppitem)
+        @if ($loop->index == 0)
         <li class="nav-item">
+            <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#pertemuan-{{ $loop->iteration }}"
+                aria-controls="pertemuan-{{ $loop->iteration }}" aria-selected="true">
+                pertemuan-{{ $loop->iteration }}
+            </button>
+        </li>
+        @else
+        <li class="nav-item">
+            <button type="button" class="nav-link " role="tab" data-bs-toggle="tab" data-bs-target="#pertemuan-{{ $loop->iteration }}"
+                aria-controls="pertemuan-{{ $loop->iteration }}" aria-selected="true">
+                pertemuan-{{ $loop->iteration }}
+            </button>
+        </li>
+        @endif
+        @empty
+        {{-- <li class="nav-item">
             <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#pertemuan-1"
                 aria-controls="pertemuan-1" aria-selected="true">
                 pertemuan-1
             </button>
-        </li>
-        <li class="nav-item">
-            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#pertemuan-2"
-                aria-controls="pertemuan-2" aria-selected="false">
-                pertemuan-2
-            </button>
-        </li>
-        <li class="nav-item">
-            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#pertemuan-3"
-                aria-controls="pertemuan-3" aria-selected="false">
-                pertemuan-3
-            </button>
-        </li>
+        </li> --}}
+        
+        @endforelse
     </ul>
     <div class="tab-content">
-        <div class="tab-pane fade show active" id="pertemuan-1" role="tabpanel">
+        @forelse ($datarpp as $rppitem)
+        @if ($loop->index == 0)
+        <div class="tab-pane fade show active" id="pertemuan-{{ $loop->iteration }}" role="tabpanel">
+            <p>kompetensi Dasar :
+            <p>{{ $rppitem->kompetensi_dasar }}</p>
+            </p>
+            <h5>
+                A.Tujuan Pembelajaran
+            </h5>
+            <p>
+                {{ $rppitem->tujuan_pembelajaran }}
+            </p>
+            <h5>
+                B.Langkah-langkah Pembelajaran
+            </h5>
+            <p>
+                {{ $rppitem->langkah_pembelajaran_pendahuluan }}
+            </p>
+            <p>
+                {{ $rppitem->langkah_pembelajaran_isi }}
+            </p>
+            <h5>
+                C.Assesmen
+            </h5>
+            <p class="mb-0">
+                {{ $rppitem->tujuan_pembelajaran }}
+            </p>
+        </div>
+        
+        @else
+        <div class="tab-pane fade show " id="pertemuan-{{ $loop->iteration }}" role="tabpanel">
+            <p>kompetensi Dasar :
+            <p>{{ $rppitem->kompetensi_dasar }}</p>
+            </p>
+            <h5>
+                A.Tujuan Pembelajaran
+            </h5>
+            <p>
+                {{ $rppitem->tujuan_pembelajaran }}
+            </p>
+            <h5>
+                B.Langkah-langkah Pembelajaran
+            </h5>
+            <p>
+                {{ $rppitem->langkah_pembelajaran_pendahuluan }}
+            </p>
+            <p>
+                {{ $rppitem->langkah_pembelajaran_isi }}
+            </p>
+            <h5>
+                C.Assesmen
+            </h5>
+            <p class="mb-0">
+                {{ $rppitem->tujuan_pembelajaran }}
+            </p>
+        </div>
+        
+        @endif
+        @empty
+        <p>Data Rpp masih kosong !!!</p>
+        {{-- <div class="tab-pane fade show active" id="pertemuan-1" role="tabpanel">
             <p>kompetensi Dasar :
             <ul class="list-unstyled">
                 <li>3.10 Mengevaluasi Control Panel Hosting</li>
@@ -73,29 +140,8 @@
                 jelly-o jelly-o ice cream jelly beans candy canes cake bonbon. Cookie jelly beans marshmallow
                 jujubes sweet.
             </p>
-        </div>
-        <div class="tab-pane fade" id="pertemuan-2" role="tabpanel">
-            <p>
-                Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat cake ice
-                cream. Gummies halvah tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice cream
-                cheesecake fruitcake.
-            </p>
-            <p class="mb-0">
-                Jelly-o jelly beans icing pastry cake cake lemon drops. Muffin muffin pie tiramisu halvah
-                cotton candy liquorice caramels.
-            </p>
-        </div>
-        <div class="tab-pane fade" id="pertemuan-3" role="tabpanel">
-            <p>
-                Oat cake chupa chups dragée donut toffee. Sweet cotton candy jelly beans macaroon gummies
-                cupcake gummi bears cake chocolate.
-            </p>
-            <p class="mb-0">
-                Cake chocolate bar cotton candy apple pie tootsie roll ice cream apple pie brownie cake. Sweet
-                roll icing sesame snaps caramels danish toffee. Brownie biscuit dessert dessert. Pudding jelly
-                jelly-o tart brownie jelly.
-            </p>
-        </div>
+        </div> --}}
+        @endforelse
     </div>
 </div>
 
@@ -107,39 +153,51 @@
                 <h5 class="modal-title" id="modalCenterTitle">Tambah Pertemuan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col mb-3">
-                        <label for="nameWithTitle" class="form-label">kompetensi Dasar</label>
-                        <textarea id="nameWithTitle" class="form-control"
-                            placeholder="3.10 judul kd pertama&#10;4.10 judul Kd kedua dan seterusnya"></textarea>
+            <form action="{{ route('rpp.store') }}" method="post">
+                @csrf
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="nameWithTitle" class="form-label">kompetensi Dasar</label>
+                            <textarea id="nameWithTitle" class="form-control" name="kompetensi_dasar"
+                                placeholder="3.10 judul kd pertama&#10;4.10 judul Kd kedua dan seterusnya"></textarea>
+                        </div>
                     </div>
+                    <div class="col mb-3">
+                        <label for="emailWithTitle" class="form-label">Tujuan Pembelajaran</label>
+                        <textarea id="emailWithTitle" class="form-control" name="tujuan_pembelajaran"
+                            placeholder="isikan tujuan pembelajaran"></textarea>
+                    </div>
+                    <div class="col mb-3">
+                        <label for="dobWithTitle" class="form-label">Langkah Langlah Pembelajaran</label>
+                        <textarea id="dobWithTitle" class="form-control mb-2" placeholder="[PENDAHULUAN]"
+                            name="langkah_pembelajaran_pendahuluan"></textarea>
+                        <textarea id="dobWithTitle" class="form-control mb-2" placeholder="[INTI]"
+                            name="langkah_pembelajaran_isi"></textarea>
+                        <textarea id="dobWithTitle" class="form-control " placeholder="[PENUTUP]"
+                            name="langkah_pembelajaran_penutup"></textarea>
+                    </div>
+                    <div class="col mb-3">
+                        <label for="dobWithTitle" class="form-label">Assesmen</label>
+                        <textarea id="dobWithTitle" class="form-control" placeholder="assessmen"
+                            name="assesmen"></textarea>
+                    </div>
+                    @if (count($rppid))
+                    <input type="text" name="rppid" id="rppid" value="{{ $rppid[0]->id }}" hidden readonly>
+                    @else
+                    <input type="text" name="rppid" id="rppid" value="0" hidden readonly>
+                        
+                    @endif
+                    
                 </div>
-                <div class="col mb-3">
-                    <label for="emailWithTitle" class="form-label">Tujuan Pembelajaran</label>
-                    <textarea id="emailWithTitle" class="form-control"
-                        placeholder="isikan tujuan pembelajaran"></textarea>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
-                <div class="col mb-3">
-                    <label for="dobWithTitle" class="form-label">Langkah Langlah Pembelajaran</label>
-                    <textarea id="dobWithTitle" class="form-control mb-2"
-                        placeholder="[PENDAHULUAN]"></textarea>
-                    <textarea id="dobWithTitle" class="form-control mb-2"
-                        placeholder="[INTI]"></textarea>
-                    <textarea id="dobWithTitle" class="form-control "
-                        placeholder="[PENUTUP]"></textarea>
-                </div>
-                <div class="col mb-3">
-                    <label for="dobWithTitle" class="form-label">Assesmen</label>
-                    <textarea id="dobWithTitle" class="form-control" placeholder="assessmen"></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Close
-                </button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
