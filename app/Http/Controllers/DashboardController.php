@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EventJadwalPiketGuru;
 use App\Models\GuruMapel;
 use App\Models\JadwalMengajar;
 use Carbon\Carbon;
@@ -31,7 +32,13 @@ class DashboardController extends Controller
             }
             $sekarangHari = Carbon::parse(now())->translatedFormat('l, d F Y');
             return view('dashboard.home')->with('title', 'Dashboard')->with('jadwalHariIni', $jadwalHariIni)->with('sekarangHari', $sekarangHari);
-        } else {
+        }elseif (Auth()->user()->hasRole('wakil kurikulum')) {
+            $gurupiket = EventJadwalPiketGuru::where('start','2024-07-07 00:00:00')->get('title');
+            $sekarangHari = Carbon::parse(now())->translatedFormat('l, d F Y');
+            return view('dashboard.home')->with('title', 'Dashboard')->with('sekarangHari', $sekarangHari)->with('gurupiket',$gurupiket);
+            
+        }
+         else {
             $sekarangHari = Carbon::parse(now())->translatedFormat('l, d F Y');
             return view('dashboard.home')->with('title', 'Dashboard')->with('sekarangHari', $sekarangHari);
         }
