@@ -25,15 +25,17 @@
         @forelse ($datarpp as $rppitem)
         @if ($loop->index == 0)
         <li class="nav-item">
-            <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#pertemuan-{{ $loop->iteration }}"
-                aria-controls="pertemuan-{{ $loop->iteration }}" aria-selected="true">
+            <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                data-bs-target="#pertemuan-{{ $loop->iteration }}" aria-controls="pertemuan-{{ $loop->iteration }}"
+                aria-selected="true">
                 pertemuan-{{ $loop->iteration }}
             </button>
         </li>
         @else
         <li class="nav-item">
-            <button type="button" class="nav-link " role="tab" data-bs-toggle="tab" data-bs-target="#pertemuan-{{ $loop->iteration }}"
-                aria-controls="pertemuan-{{ $loop->iteration }}" aria-selected="true">
+            <button type="button" class="nav-link " role="tab" data-bs-toggle="tab"
+                data-bs-target="#pertemuan-{{ $loop->iteration }}" aria-controls="pertemuan-{{ $loop->iteration }}"
+                aria-selected="true">
                 pertemuan-{{ $loop->iteration }}
             </button>
         </li>
@@ -45,7 +47,7 @@
                 pertemuan-1
             </button>
         </li> --}}
-        
+
         @endforelse
     </ul>
     <div class="tab-content">
@@ -77,7 +79,7 @@
                 {{ $rppitem->tujuan_pembelajaran }}
             </p>
         </div>
-        
+
         @else
         <div class="tab-pane fade show " id="pertemuan-{{ $loop->iteration }}" role="tabpanel">
             <p>kompetensi Dasar :
@@ -105,7 +107,7 @@
                 {{ $rppitem->tujuan_pembelajaran }}
             </p>
         </div>
-        
+
         @endif
         @empty
         <p>Data Rpp masih kosong !!!</p>
@@ -187,9 +189,9 @@
                     <input type="text" name="rppid" id="rppid" value="{{ $rppid[0]->id }}" hidden readonly>
                     @else
                     <input type="text" name="rppid" id="rppid" value="0" hidden readonly>
-                        
+
                     @endif
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -204,36 +206,37 @@
 <!-- Modal -->
 <div class="modal fade" id="modalHapus" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalCenterTitle">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col mb-3">
-                        <label for="nameWithTitle" class="form-label">Name</label>
-                        <input type="text" id="nameWithTitle" class="form-control" placeholder="Enter Name" />
-                    </div>
+        <form action="{{ route('rpp.delete') }}" method="post">
+            <div class="modal-content">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCenterTitle">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="row g-2">
-                    <div class="col mb-0">
-                        <label for="emailWithTitle" class="form-label">Email</label>
-                        <input type="text" id="emailWithTitle" class="form-control" placeholder="xxxx@xxx.xx" />
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="select-pertemuan" class="form-label">Pertemuan</label>
+                            <select id="select-pertemuan" class="form-select form-select-lg" name="iditemrpp">
+                                <option>Pilih pertemuan</option>
+                                @forelse ($datarpp as $item)
+                                <option value="1">id pertemuan ke-{{ $loop->iteration }} , {{ $item->id }}</option>
+                                @empty
+                                <option value="#">Data pertemuan masih kosong</option>
+                                @endforelse
+                            </select>
+                        </div>
                     </div>
-                    <div class="col mb-0">
-                        <label for="dobWithTitle" class="form-label">DOB</label>
-                        <input type="text" id="dobWithTitle" class="form-control" placeholder="DD / MM / YY" />
-                    </div>
+                    {{-- <input type="text" value="{{ $datarpp[0]->rpp_id }}" name="idrpp"> --}}
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Close
-                </button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </div>
+        </form>
     </div>
+</div>
 </div>
 @endsection

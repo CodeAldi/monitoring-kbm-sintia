@@ -6,6 +6,7 @@ use App\Models\Rpp;
 use App\Models\GuruMapel;
 use App\Models\Rpp_items;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Type\Integer;
 
 class RppController extends Controller
 {
@@ -129,8 +130,10 @@ class RppController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Rpp $rpp)
+    public function destroy(Request $request)
     {
-        //
+        $itemrpp = Rpp_items::find($request->iditemrpp);
+        $itemrpp->delete();
+        return back();
     }
 }

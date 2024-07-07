@@ -78,4 +78,5 @@ Route::controller(RppController::class)->middleware(['auth', 'role:guru mapel'])
     Route::get('rpp/index','index')->name('rpp.index');
     Route::get('rpp/tingkat-kelas/{tingkatKelas}/create','create')->name('rpp.create');
     Route::post('rpp/store','store')->name('rpp.store');
+    Route::post('rpp/delete','destroy')->name('rpp.delete');
 });
