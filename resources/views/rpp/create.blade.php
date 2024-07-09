@@ -185,8 +185,8 @@
                         <textarea id="dobWithTitle" class="form-control" placeholder="assessmen"
                             name="assesmen"></textarea>
                     </div>
-                    @if (count($rppid))
-                    <input type="text" name="rppid" id="rppid" value="{{ $rppid[0]->id }}" hidden readonly>
+                    @if (count($rppid[0]))
+                    <input type="text" name="rppid" id="rppid" value="{{ $rppid[0][0]->id }}" hidden readonly>
                     @else
                     <input type="text" name="rppid" id="rppid" value="0" hidden readonly>
 
@@ -218,9 +218,9 @@
                         <div class="col mb-3">
                             <label for="select-pertemuan" class="form-label">Pertemuan</label>
                             <select id="select-pertemuan" class="form-select form-select-lg" name="iditemrpp">
-                                <option>Pilih pertemuan</option>
+                                <option value="0" selected>Pilih pertemuan</option>
                                 @forelse ($datarpp as $item)
-                                <option value="1">id pertemuan ke-{{ $loop->iteration }} , {{ $item->id }}</option>
+                                <option value="{{ $item->id }}">id pertemuan ke-{{ $loop->iteration }}</option>
                                 @empty
                                 <option value="#">Data pertemuan masih kosong</option>
                                 @endforelse

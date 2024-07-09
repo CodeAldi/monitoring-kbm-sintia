@@ -37,9 +37,13 @@ class RppController extends Controller
         $guruMapel = GuruMapel::where('users_id', Auth()->user()->id)->get();
         if (count($guruMapel)) {
             // check data rpp
-            $rppid = Rpp::where('guru_mapel_id', Auth()->user()->id)->get('id');
-            if (count($rppid)) {
-                $datarpp = Rpp_items::where('rpp_id', $rppid[0]->id)->get();
+            foreach ($guruMapel as $key => $value) {
+                # code...
+                $rppid[$key] = Rpp::where('guru_mapel_id', $value->id)->get('id');
+            }
+            // dd($rppid[0]);
+            if (count($rppid[0])) {
+                $datarpp = Rpp_items::where('rpp_id', $rppid[0][0]->id)->get();
             } else {
                 $datarpp = [];
             }
@@ -52,7 +56,7 @@ class RppController extends Controller
                 }
             }
         }
-        // dd($datarpp);
+        // dd($guruMapel);
         return view('rpp.create')->with('title', 'RPP | Create')->with('data',$data)->with('datarpp',$datarpp)->with('rppid',$rppid);
     }
 
@@ -64,11 +68,11 @@ class RppController extends Controller
         $guruMapelid = GuruMapel::where('users_id', Auth()->user()->id)->get('id')->first();
         $is_exist = rpp::where('guru_mapel_id',$guruMapelid)->first();
         if($is_exist){
-            // data rpp ada;
         }
         else{
+            // dd($request->rppid > 0);
             // data rpp kosong;
-            if ($request->rppid) {
+            if ($request->rppid > 0) {
                 $rpp_items = new Rpp_items();
                 $rpp_items->rpp_id = $request->rppid;
                 $rpp_items->pertemuan = 1;
@@ -132,8 +136,15 @@ class RppController extends Controller
      */
     public function destroy(Request $request)
     {
-        $itemrpp = Rpp_items::find($request->iditemrpp);
-        $itemrpp->delete();
-        return back();
+        if ($request->iditemrpp == '0') {
+            // dd('dia milih default');
+            return back();
+        }
+        else {
+            // dd($request->iditemrpp);
+            $itemrpp = Rpp_items::find($request->iditemrpp);
+            $itemrpp->delete();
+            return back();
+        }
     }
 }
