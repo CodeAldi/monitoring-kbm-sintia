@@ -148,7 +148,7 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('laporkbm.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-check-square'></i>
                 Lapor Proses KBM
             </a>

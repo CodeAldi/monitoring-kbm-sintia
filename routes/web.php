@@ -7,6 +7,7 @@ use App\Http\Controllers\JadwalMengajarController;
 use App\Http\Controllers\JadwalPiketGuruController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\LaporProsesKbmController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\RppController;
 use App\Http\Controllers\UserGuruController;
@@ -79,4 +80,8 @@ Route::controller(RppController::class)->middleware(['auth', 'role:guru mapel'])
     Route::get('rpp/tingkat-kelas/{tingkatKelas}/create','create')->name('rpp.create');
     Route::post('rpp/store','store')->name('rpp.store');
     Route::post('rpp/delete','destroy')->name('rpp.delete');
+});
+
+Route::controller(LaporProsesKbmController::class)->middleware(['auth', 'role:guru mapel'])->group(function(){
+    Route::get('lapor-proses-kbm/index','index')->name('laporkbm.index');
 });
