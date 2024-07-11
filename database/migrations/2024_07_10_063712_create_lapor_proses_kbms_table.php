@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lapor_proses_kbms', function (Blueprint $table) {
+        Schema::create('lapor_proses_kbm', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('jadwal_mengajar_id')->constrained('jadwal_mengajar')->cascade('onUpdate')->cascade('onDelete');
+            $table->boolean('pembukaan');
+            $table->boolean('isi');
+            $table->boolean('penutup');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lapor_proses_kbms');
+        Schema::dropIfExists('lapor_proses_kbm');
     }
 };
