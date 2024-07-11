@@ -147,7 +147,7 @@
                 Absensi Siswa
             </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ (Request::RouteIs('laporkbm.*')) ? 'active' : '' }}">
             <a href="{{ route('laporkbm.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-check-square'></i>
                 Lapor Proses KBM

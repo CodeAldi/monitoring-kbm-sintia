@@ -83,5 +83,6 @@ Route::controller(RppController::class)->middleware(['auth', 'role:guru mapel'])
 });
 
 Route::controller(LaporProsesKbmController::class)->middleware(['auth', 'role:guru mapel'])->group(function(){
-    Route::get('lapor-proses-kbm/index','index')->name('laporkbm.index');
+    Route::get('lapor-proses-kbm/pilihkelas','index')->name('laporkbm.index');
+    Route::post('lapor-proses-kbm/lapor','lapor')->name('laporkbm.lapor');
 });

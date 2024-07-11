@@ -30,4 +30,22 @@ class JadwalMengajar extends Model
     {
         return $this->belongsTo(Kelas::class);
     }
+    /**
+     * Get the gurumapel that owns the JadwalMengajar
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function gurumapel(): BelongsTo
+    {
+        return $this->belongsTo(GuruMapel::class);
+    }
+    /**
+     * Get the eventmengajar that owns the JadwalMengajar
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function eventmengajar(): BelongsTo
+    {
+        return $this->belongsTo(EventJadwalMengajar::class, 'event_jadwal_mengajar_id');
+    }
 }
