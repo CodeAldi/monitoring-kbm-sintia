@@ -77,23 +77,23 @@
         {{-- /.data master user --}}
         @elseif(Auth()->user()->hasRole('wakil kurikulum'))
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Pembagian Tugas Mengajar</span>
+            <span class="menu-header-text">Jadwal dan Penugasan Guru</span>
         </li>
         <li class="menu-item {{ (Request::RouteIs('gurumapel.*')) ? 'active' : '' }}">
             <a href="{{ route('gurumapel.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-laptop'></i>
-                Guru Mapel
+                Penugasan Guru Mata pelajaran
             </a>
+            <li class="menu-item {{ (Request::RouteIs('jadwalmengajar.*')) ? 'active' : '' }}">
+                <a href="{{ route('jadwalmengajar.pilihkelas') }}" class="menu-link">
+                    <i class='menu-icon bx bx-book'></i>
+                    Jadwal Pelajaran
+                </a>
+            </li>
         </li>
         {{--! penjadwalan !--}}
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Jadwal</span>
-        </li>
-        <li class="menu-item {{ (Request::RouteIs('jadwalmengajar.*')) ? 'active' : '' }}">
-            <a href="{{ route('jadwalmengajar.pilihkelas') }}" class="menu-link">
-                <i class='menu-icon bx bx-book'></i>
-                Jadwal Pelajaran
-            </a>
+            <span class="menu-header-text">Piket</span>
         </li>
         <li class="menu-item {{ (Request::RouteIs('jadwalpiket.*')) ? 'active' : '' }}">
             <a href="{{ route('jadwalpiket.index') }}" class="menu-link">
