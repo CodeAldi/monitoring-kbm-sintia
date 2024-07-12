@@ -6,6 +6,7 @@ use App\Models\EventJadwalMengajar;
 use App\Models\GuruMapel;
 use App\Models\JadwalMengajar;
 use App\Models\Kelas;
+use App\Models\lapor_proses_kbm;
 use DateInterval;
 use DatePeriod;
 use Illuminate\Http\Request;
@@ -64,6 +65,7 @@ class JadwalMengajarController extends Controller
             $title = $gurudanmapel->mapel->nama_mapel;
             $start = $date->format('Y-m-d') . 'T' . $request->jam_mulai;
             $end = $date->format('Y-m-d') . 'T' . $request->jam_selesai;
+
             $event = new EventJadwalMengajar();
             $event->title = $title;
             $event->start = $start;
@@ -77,6 +79,10 @@ class JadwalMengajarController extends Controller
             $jadwalMengajar->tanggal_mulai = $date->format('Y-m-d');
             $jadwalMengajar->tanggal_selesai = $request->tanggal_selesai;
             $jadwalMengajar->save();
+
+            $laporProsesKbmHarian = new lapor_proses_kbm();
+            $laporProsesKbmHarian->jadwal_mengajar_id = $jadwalMengajar->id;
+            $laporProsesKbmHarian->save();
         }
         // dd($end_date->modify('23 hours'));
         return back();
