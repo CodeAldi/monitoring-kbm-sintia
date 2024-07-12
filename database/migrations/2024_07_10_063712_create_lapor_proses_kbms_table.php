@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('lapor_proses_kbm', function (Blueprint $table) {
             $table->id();
             $table->foreignId('jadwal_mengajar_id')->constrained('jadwal_mengajar')->cascade('onUpdate')->cascade('onDelete');
-            $table->boolean('pembukaan');
-            $table->boolean('isi');
-            $table->boolean('penutup');
+            $table->boolean('pembukaan')->default(0);
+            $table->boolean('isi')->default(0);
+            $table->boolean('penutup')->default(0);
             $table->timestamps();
         });
     }
