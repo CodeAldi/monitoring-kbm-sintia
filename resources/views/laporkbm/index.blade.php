@@ -6,16 +6,29 @@
     </div>
 </div>
 <div class="row mt-2 g-2">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="card">
             <div class="card-body">
-                <p class="card-text">Mata Pelajaran : {{ $penugasan->mapel->nama_mapel }}</p>
-                <p class="card-text">kelas : {{ $penugasan->kelas->nama_kelas }}</p>
-                <p class="card-text">Jam Mengajar : {{ $jam_start_mengajar->toTimeString() }} -- {{
+                <p class="card-text">{{ $penugasan->mapel->nama_mapel }}</p>
+                <p class="card-text">{{ $penugasan->kelas->nama_kelas }}</p>
+                <p class="card-text">{{ $jam_start_mengajar->toTimeString() }} -- {{
                     $jam_end_mengajar->toTimeString() }} wib</p>
-                <p class="card-text">status : Belum dimulai</p>
+                @if ($laporankbmharian)
+                <p class="card-text">status : <span class="badge bg-label-primary">{{ $laporankbmharian[0]->status }}
+                    </span></p>
+                @else
+                <p class="card-text">status : No Data</p>
+                @endif
             </div>
         </div>
+        @if ($laporankbmharian[0]->status == 'has-not-started-yet')
+        <form action="{{ route('laporkbm.lapor.mulai',['laporankbmharian'=>$laporankbmharian[0]]) }}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-success mt-3 w-100">Mulai</button>
+        </form>
+        @else
+        <button class="btn btn-primary mt-3 w-100" disabled>Sedang berlangsung</button>
+        @endif
     </div>
     <div class="col-md">
         <div class="card">
@@ -47,32 +60,65 @@
                                 <td>2</td>
                                 <td>pembukaan KBM</td>
                                 <td>
-                                    <span class="badge bg-label-{{ $laporankbmharian[0] ? 'success' : 'warning' }}">{{ $laporankbmharian[0]->pembukaan ? 'selesai' : 'sedang berlangsung' }}</span>
+                                    @if ($laporankbmharian[0]->pembukaan == 'has-not-started-yet')
+                                    <span class="badge bg-label-secondary">{{ $laporankbmharian[0]->pembukaan }}</span>
+                                    @elseif ($laporankbmharian[0]->pembukaan == 'ongoing')
+                                    <span class="badge bg-label-primary">{{ $laporankbmharian[0]->pembukaan }}</span>
+                                    @elseif ($laporankbmharian[0]->pembukaan == 'finished')
+                                    <span class="badge bg-label-success">{{ $laporankbmharian[0]->pembukaan }}</span>
+                                    @endif
                                 </td>
                                 <td>
                                     <div class="row g-2">
-                                        {{-- <div class="btn btn-success rounded-pill">Mulai</div> --}}
-                                        <button class="btn btn-{{ $laporankbmharian[0]->pembukaan ? 'primary' : 'success' }} rounded-pill" {{ $laporankbmharian[0]->pembukaan ? 'disabled' : '' }}>{{ $laporankbmharian[0]->pembukaan ? 'selesai' : 'mulai' }}</button>
+                                        @if ($laporankbmharian[0]->status == 'started')
+                                        <form
+                                            action="{{ route('laporkbm.lapor.mulai.pembukaan',['laporankbmharian'=>$laporankbmharian[0]]) }}"
+                                            method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success rounded-pill">Konfirmasi
+                                                Mulai</button>
+                                        </form>
+                                        @elseif ($laporankbmharian[0]->pembukaan == 'ongoing')
+                                        <form
+                                            action="{{ route('laporkbm.lapor.selesai.pembukaan',['laporankbmharian'=>$laporankbmharian[0]]) }}"
+                                            method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-primary rounded-pill">Konfirmasi
+                                                Selesai</button>
+                                        </form>
+                                        @elseif ($laporankbmharian[0]->pembukaan == 'finished')
+                                        <button class="btn btn-success rounded-pill" disabled>selsai</button>
+
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>3</td>
                                 <td>proses penyampaian materi / kegiatan inti kbm</td>
-                                <td><span class="badge bg-label-{{ ($laporankbmharian[0]->pembukaan xor $laporankbmharian[0]->pembukaan) ? 'warning' : 'success' }}">{{ ($laporankbmharian[0]->pembukaan xor $laporankbmharian[0]->pembukaan) ? 'sedang berlangsung' : 'selesai' }}</span></td>
+                                <td>
+                                    @if ($laporankbmharian[0]->isi == 'has-not-started-yet')
+                                    <span class="badge bg-label-secondary">{{ $laporankbmharian[0]->isi }}</span>
+                                    @elseif ($laporankbmharian[0]->isi == 'ongoing')
+                                    <span class="badge bg-label-primary">{{ $laporankbmharian[0]->isi }}</span>
+                                    @elseif ($laporankbmharian[0]->isi == 'finished')
+                                    <span class="badge bg-label-success">{{ $laporankbmharian[0]->isi }}</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="row g-2">
-                                        <button class="btn btn-{{ $laporankbmharian[0]->isi ? 'primary' : 'success' }} rounded-pill" {{ $laporankbmharian[0]->isi ? 'disabled' : '' }}>Selesai</button>
+                                        <button class="btn btn-primary rounded-pill">Konfirmasi Selesai</button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>4</td>
                                 <td>rangkuman dan menutup KBM</td>
-                                <td><span class="badge bg-label-{{ $laporankbmharian[0] ? 'secondary' : 'success' }}">{{ $laporankbmharian[0] ? 'belum mulai' : 'success' }}</span></td>
+                                <td><span class="badge bg-label-secondary">belum mulai</span></td>
                                 <td>
                                     <div class="row g-2">
-                                        <button class="btn btn-success rounded-pill" {{ $laporankbmharian[0] ? 'disabled' : '' }}>Selesai</button>
+                                        <button class="btn btn-secondary rounded-pill" disabled>konfrimasi
+                                            Selesai</button>
                                     </div>
                                 </td>
                             </tr>

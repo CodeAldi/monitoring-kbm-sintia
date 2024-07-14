@@ -12,7 +12,7 @@
             <div class="card-body d-flex flex-column">
                 <p class="card-text text-center mb-3">Kelas {{ $item->kelas->nama_kelas }} </p>
                 <p class="card-text text-center mb-3">Mata pelajaran {{ $item->mapel->nama_mapel }} </p>
-                <form action="{{ route('laporkbm.lapor') }}" method="post">
+                <form action="{{ route('laporkbm.lapor') }}" method="get">
                     @csrf
                     <input type="hidden" name="idpenugasanguru" value="{{ $item->id }}">
                     <div class="row">

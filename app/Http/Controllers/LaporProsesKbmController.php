@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\StatusKbm;
 use App\Models\GuruMapel;
 use App\Models\JadwalMengajar;
 use App\Models\lapor_proses_kbm;
@@ -24,6 +25,9 @@ class LaporProsesKbmController extends Controller
             if ($value->tanggal_mulai == date('Y-m-d')){
                 $laporankbmharian = lapor_proses_kbm::where('jadwal_mengajar_id',$value->id)->get();                
             }
+            else{
+                $laporankbmharian[]=[];
+            }
         }
         // dd($laporankbmharian);
         $jam_start_mengajar = Carbon::create($jadwalmengajar[0]->eventmengajar->start);
@@ -35,5 +39,24 @@ class LaporProsesKbmController extends Controller
             ->with('jam_end_mengajar', $jam_end_mengajar)
             ->with('jadwalmengajar',$jadwalmengajar)
             ->with('laporankbmharian',$laporankbmharian);
+    }
+    function mulaiKbm($laporanhariankbm) {
+        $mulaikbm = lapor_proses_kbm::find($laporanhariankbm);
+        $mulaikbm->status = StatusKbm::STARTED;
+        $mulaikbm->save();
+        return back();
+    }
+    function mulaiPembukaanKbm($laporanhariankbm) {
+        $mulaipembukaan = lapor_proses_kbm::find($laporanhariankbm);
+        $mulaipembukaan->status = StatusKbm::ONGOING;
+        $mulaipembukaan->pembukaan = StatusKbm::ONGOING;
+        $mulaipembukaan->save();
+        return back();
+    }
+    function selesaiPembukaanKbm($laporanhariankbm) {
+        $mulaipembukaan = lapor_proses_kbm::find($laporanhariankbm);
+        $mulaipembukaan->pembukaan = StatusKbm::FINISHED;
+        $mulaipembukaan->save();
+        return back();
     }
 }
