@@ -56,7 +56,21 @@ class LaporProsesKbmController extends Controller
     function selesaiPembukaanKbm($laporanhariankbm) {
         $mulaipembukaan = lapor_proses_kbm::find($laporanhariankbm);
         $mulaipembukaan->pembukaan = StatusKbm::FINISHED;
+        $mulaipembukaan->isi = StatusKbm::ONGOING;
         $mulaipembukaan->save();
+        return back();
+    }
+    function selesaiIsiKbm($laporanhariankbm) {
+        $selesaiisikbm = lapor_proses_kbm::find($laporanhariankbm);
+        $selesaiisikbm->isi = StatusKbm::FINISHED;
+        $selesaiisikbm->penutup = StatusKbm::ONGOING;
+        $selesaiisikbm->save();
+        return back();
+    }
+    function selesaiPenutupKbm($laporanhariankbm) {
+        $selesaiPenutupKbm = lapor_proses_kbm::find($laporanhariankbm);
+        $selesaiPenutupKbm->penutup = StatusKbm::FINISHED;
+        $selesaiPenutupKbm->save();
         return back();
     }
 }
