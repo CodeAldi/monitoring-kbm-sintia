@@ -22,7 +22,7 @@
             </div>
         </div>
         @if ($laporankbmharian[0]->status == 'has-not-started-yet')
-        <form action="{{ route('laporkbm.lapor.mulai',['laporankbmharian'=>$laporankbmharian[0]]) }}" method="post">
+        <form action="{{ route('laporkbm.lapor.mulaikbm',['laporankbmharian'=>$laporankbmharian[0]]) }}" method="post">
             @csrf
             <button type="submit" class="btn btn-success mt-3 w-100">Mulai</button>
         </form>
