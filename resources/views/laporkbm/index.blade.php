@@ -90,7 +90,8 @@
                                         </form>
                                         @elseif ($laporankbmharian[0]->pembukaan == 'finished')
                                         <button class="btn btn-success rounded-pill" disabled>selsai</button>
-
+                                        @else
+                                        <button class="btn btn-secondary rounded-pill" disabled>belum mulai</button>
                                         @endif
                                     </div>
                                 </td>
