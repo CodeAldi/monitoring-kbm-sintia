@@ -5,6 +5,7 @@
         <h5 class="card-title text-center">Lapor Proses Kegiatan Belajar Mengajar</h5>
     </div>
 </div>
+@if ($laporankbmharian[0] != [''])
 <div class="row mt-2 g-2">
     <div class="col-md-3">
         <div class="card">
@@ -26,8 +27,10 @@
             @csrf
             <button type="submit" class="btn btn-success mt-3 w-100">Mulai</button>
         </form>
-        @elseif (($laporankbmharian[0]->pembukaan == 'finished')&& ($laporankbmharian[0]->isi == 'finished')&&($laporankbmharian[0]->penutup == 'finished'))
-        <button data-bs-toggle="modal" data-bs-target="#tutuplaporankbm" class="btn btn-primary mt-3 w-100" >Konfirmasi Selesai</button>
+        @elseif (($laporankbmharian[0]->pembukaan == 'finished')&& ($laporankbmharian[0]->isi ==
+        'finished')&&($laporankbmharian[0]->penutup == 'finished'))
+        <button data-bs-toggle="modal" data-bs-target="#tutuplaporankbm" class="btn btn-primary mt-3 w-100">Konfirmasi
+            Selesai</button>
         @else
         <button class="btn btn-primary mt-3 w-100" disabled>Sedang berlangsung</button>
         @endif
@@ -111,15 +114,17 @@
                                 <td>
                                     <div class="row g-2">
                                         @if ($laporankbmharian[0]->isi == 'has-not-started-yet')
-                                        <button class="btn btn-secondary rounded-pill" disabled>belum mulai</button>    
+                                        <button class="btn btn-secondary rounded-pill" disabled>belum mulai</button>
                                         @elseif ($laporankbmharian[0]->isi == 'ongoing')
-                                        <form action="{{ route('laporkbm.lapor.selesai.isi',['laporankbmharian'=>$laporankbmharian[0]]) }}" method="post">
+                                        <form
+                                            action="{{ route('laporkbm.lapor.selesai.isi',['laporankbmharian'=>$laporankbmharian[0]]) }}"
+                                            method="post">
                                             @csrf
                                             <button type="submit" class="btn btn-primary rounded-pill">Konfirmasi
                                                 Selesai</button>
                                         </form>
                                         @elseif ($laporankbmharian[0]->isi == 'finished')
-                                            
+
                                         <button class="btn btn-success rounded-pill" disabled>Selesai</button>
                                         @endif
                                     </div>
@@ -142,13 +147,15 @@
                                         @if ($laporankbmharian[0]->penutup == 'has-not-started-yet')
                                         <button class="btn btn-secondary rounded-pill" disabled>belum mulai</button>
                                         @elseif ($laporankbmharian[0]->penutup == 'ongoing')
-                                        <form action="{{ route('laporkbm.lapor.selesai.penutup',['laporankbmharian'=>$laporankbmharian[0]]) }}" method="post">
+                                        <form
+                                            action="{{ route('laporkbm.lapor.selesai.penutup',['laporankbmharian'=>$laporankbmharian[0]]) }}"
+                                            method="post">
                                             @csrf
                                             <button type="submit" class="btn btn-primary rounded-pill">Konfirmasi
                                                 Selesai</button>
                                         </form>
                                         @elseif ($laporankbmharian[0]->penutup == 'finished')
-                                        
+
                                         <button class="btn btn-success rounded-pill" disabled>Selesai</button>
                                         @endif
                                     </div>
@@ -166,24 +173,20 @@
     <div class="modal-dialog">
         <form class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="backDropModalTitle">Modal title</h5>
+                <h5 class="modal-title" id="backDropModalTitle">Konfirmasi Selesai Proses KBM</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="nameBackdrop" class="form-label">Name</label>
-                        <input type="text" id="nameBackdrop" class="form-control" placeholder="Enter Name" />
+                        <label for="assesment" class="form-label">catatan assesment (jika ada)</label>
+                        <input type="text" id="assesment" name="assesment" class="form-control" />
                     </div>
                 </div>
                 <div class="row g-2">
                     <div class="col mb-0">
-                        <label for="emailBackdrop" class="form-label">Email</label>
-                        <input type="text" id="emailBackdrop" class="form-control" placeholder="xxxx@xxx.xx" />
-                    </div>
-                    <div class="col mb-0">
-                        <label for="dobBackdrop" class="form-label">DOB</label>
-                        <input type="text" id="dobBackdrop" class="form-control" placeholder="DD / MM / YY" />
+                        <label for="catatan" class="form-label">catatan kbm (jika ada)</label>
+                        <input type="text" id="catatan" name="catatan" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -197,4 +200,12 @@
     </div>
 </div>
 {{-- end modal konfirmasi selesai laporan kbm --}}
+@else
+<div class="card my-2">
+    <div class="card-body">
+        <h5 class="card-title">Jadwal mengajar tidak ditemukan</h5>
+        <p class="card-subtitle">mohon cek kembali apakah hari ini anda ada jadwal mengajar atau hubungi wakil kurikulum </p>
+    </div>
+</div>
+@endif
 @endsection

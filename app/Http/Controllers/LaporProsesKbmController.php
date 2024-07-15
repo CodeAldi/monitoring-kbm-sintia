@@ -26,7 +26,7 @@ class LaporProsesKbmController extends Controller
                 $laporankbmharian = lapor_proses_kbm::where('jadwal_mengajar_id',$value->id)->get();                
             }
             else{
-                $laporankbmharian[]=[];
+                $laporankbmharian[]=[''];
             }
         }
         // dd($laporankbmharian);
@@ -44,6 +44,12 @@ class LaporProsesKbmController extends Controller
         $mulaikbm = lapor_proses_kbm::find($laporanhariankbm);
         $mulaikbm->status = StatusKbm::STARTED;
         $mulaikbm->save();
+        return back();
+    }
+    function selesaiKbm($laporanhariankbm) {
+        $selesaikbm = lapor_proses_kbm::find($laporanhariankbm);
+        $selesaikbm->status = StatusKbm::FINISHED;
+        $selesaikbm->save();
         return back();
     }
     function mulaiPembukaanKbm($laporanhariankbm) {
