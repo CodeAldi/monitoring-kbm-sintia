@@ -104,8 +104,8 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Monitoring KBM</span>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('pantaukbm.*')) ? 'active' : '' }}">
+            <a href="{{ route('pantaukbm.listkelas') }}" class="menu-link">
                 <i class='menu-icon bx bxs-binoculars'></i>
                 Pantau KBM
             </a>

@@ -9,6 +9,7 @@ use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\LaporProsesKbmController;
 use App\Http\Controllers\MapelController;
+use App\Http\Controllers\PantauKbmController;
 use App\Http\Controllers\RppController;
 use App\Http\Controllers\UserGuruController;
 use Illuminate\Support\Facades\Route;
@@ -74,6 +75,11 @@ Route::controller(JadwalPiketGuruController::class)->middleware(['auth', 'role:w
     Route::post('jadwal-piket/store','store')->name('jadwalpiket.store');
     Route::post('jadwal-piket/delete','destroy')->name('jadwalpiket.delete');
 });
+
+Route::controller(PantauKbmController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){
+    Route::get('pantau-kbm/list-kelas','indexKelas')->name('pantaukbm.listkelas');
+});
+
 
 Route::controller(RppController::class)->middleware(['auth', 'role:guru mapel'])->group(function(){
     Route::get('rpp/index','index')->name('rpp.index');

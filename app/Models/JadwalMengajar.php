@@ -37,7 +37,7 @@ class JadwalMengajar extends Model
      */
     public function gurumapel(): BelongsTo
     {
-        return $this->belongsTo(GuruMapel::class);
+        return $this->belongsTo(GuruMapel::class, 'guru_mapel_id');
     }
     /**
      * Get the eventmengajar that owns the JadwalMengajar
