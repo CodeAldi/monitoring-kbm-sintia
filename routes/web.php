@@ -92,6 +92,7 @@ Route::controller(LaporProsesKbmController::class)->middleware(['auth', 'role:gu
     Route::get('lapor-proses-kbm/pilihkelas','index')->name('laporkbm.index');
     Route::get('lapor-proses-kbm/lapor','lapor')->name('laporkbm.lapor');
     Route::post('lapor-proses-kbm/lapor/{laporankbmharian}/mulaikbm','mulaiKbm')->name('laporkbm.lapor.mulaikbm');
+    Route::post('lapor-proses-kbm/lapor/{laporankbmharian}/selesaikbm','selesaiKbm')->name('laporkbm.lapor.selesaikbm');
     Route::post('lapor-proses-kbm/lapor/{laporankbmharian}/mulaipembukaan','mulaiPembukaanKbm')->name('laporkbm.lapor.mulai.pembukaan');
     Route::post('lapor-proses-kbm/lapor/{laporankbmharian}/selesaipembukaan','selesaiPembukaanKbm')->name('laporkbm.lapor.selesai.pembukaan');
     Route::post('lapor-proses-kbm/lapor/{laporankbmharian}/selesaiisi', 'selesaiIsiKbm')->name('laporkbm.lapor.selesai.isi');

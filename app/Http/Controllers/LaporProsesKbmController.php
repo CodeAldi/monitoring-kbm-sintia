@@ -46,9 +46,11 @@ class LaporProsesKbmController extends Controller
         $mulaikbm->save();
         return back();
     }
-    function selesaiKbm($laporanhariankbm) {
+    function selesaiKbm($laporanhariankbm, Request $request) {
         $selesaikbm = lapor_proses_kbm::find($laporanhariankbm);
         $selesaikbm->status = StatusKbm::FINISHED;
+        $selesaikbm->assesment = $request->assement;
+        $selesaikbm->catatan = $request->catatan;
         $selesaikbm->save();
         return back();
     }

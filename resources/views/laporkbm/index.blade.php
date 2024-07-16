@@ -27,6 +27,8 @@
             @csrf
             <button type="submit" class="btn btn-success mt-3 w-100">Mulai</button>
         </form>
+        @elseif ($laporankbmharian[0]->status == 'finished')
+        <button class="btn btn-primary mt-3 w-100" disabled>Selesai</button>
         @elseif (($laporankbmharian[0]->pembukaan == 'finished')&& ($laporankbmharian[0]->isi ==
         'finished')&&($laporankbmharian[0]->penutup == 'finished'))
         <button data-bs-toggle="modal" data-bs-target="#tutuplaporankbm" class="btn btn-primary mt-3 w-100">Konfirmasi
@@ -171,7 +173,8 @@
 {{-- start modal konfirmasi selesai laporan kbm --}}
 <div class="modal fade" id="tutuplaporankbm" data-bs-backdrop="static" tabindex="-1">
     <div class="modal-dialog">
-        <form class="modal-content">
+        <form class="modal-content" action="{{ route('laporkbm.lapor.selesaikbm',['laporankbmharian'=>$laporankbmharian[0]]) }}" method="POST">
+            @csrf
             <div class="modal-header">
                 <h5 class="modal-title" id="backDropModalTitle">Konfirmasi Selesai Proses KBM</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -194,7 +197,7 @@
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                     Close
                 </button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </form>
     </div>
