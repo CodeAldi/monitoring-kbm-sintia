@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruMapelController;
+use App\Http\Controllers\GuruPiketController;
 use App\Http\Controllers\JadwalMengajarController;
 use App\Http\Controllers\JadwalPiketGuruController;
 use App\Http\Controllers\JurusanController;
@@ -26,6 +27,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth')->name('dashboard');
+Route::get('/rolepiket',[DashboardController::class, 'ChangeRoleToPiket'])->middleware(['auth', 'role:guru mapel'])->name('ChangeRoleToPiket');
+Route::get('/rolemapel',[DashboardController::class, 'ChangeRoleToMapel'])->middleware(['auth', 'role:guru piket'])->name('ChangeRoleToMapel');
 
 Route::controller(AuthenticationController::class)->group(function(){
     Route::get('/','index')->middleware('guest')->name('login');
@@ -79,6 +82,9 @@ Route::controller(JadwalPiketGuruController::class)->middleware(['auth', 'role:w
 Route::controller(PantauKbmController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){
     Route::get('pantau-kbm/list-kelas','indexKelas')->name('pantaukbm.listkelas');
 });
+Route::controller(PantauKbmController::class)->middleware(['auth', 'role:guru piket'])->group(function(){
+    Route::get('/piket/pantau-kbm/list-kelas','indexKelas')->name('piket.listkelas');
+});
 
 
 Route::controller(RppController::class)->middleware(['auth', 'role:guru mapel'])->group(function(){
@@ -97,4 +103,8 @@ Route::controller(LaporProsesKbmController::class)->middleware(['auth', 'role:gu
     Route::post('lapor-proses-kbm/lapor/{laporankbmharian}/selesaipembukaan','selesaiPembukaanKbm')->name('laporkbm.lapor.selesai.pembukaan');
     Route::post('lapor-proses-kbm/lapor/{laporankbmharian}/selesaiisi', 'selesaiIsiKbm')->name('laporkbm.lapor.selesai.isi');
     Route::post('lapor-proses-kbm/lapor/{laporankbmharian}/selesaipenutup', 'selesaiPenutupKbm')->name('laporkbm.lapor.selesai.penutup');
+});
+
+Route::controller(GuruPiketController::class)->middleware(['auth', 'role:guru mapel'])->group(function(){
+    Route::get('guru-piket/beranda','BerandaPiketView')->name('gurupiket.beranda');
 });

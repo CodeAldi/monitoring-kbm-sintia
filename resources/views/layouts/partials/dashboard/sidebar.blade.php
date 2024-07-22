@@ -119,8 +119,8 @@
 
         {{-- /.penjadwalan --}}
         @elseif(Auth()->user()->hasRole('guru mapel'))
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item ">
+            <a href="{{ route('ChangeRoleToPiket') }}" class="menu-link">
                 <i class='menu-icon bx bx-bell'></i>
                 Piket
             </a>
@@ -157,13 +157,13 @@
 
         @elseif(Auth()->user()->hasRole('guru piket'))
         <li class="menu-item">
-            <a href="{{ route('piket.mengajar') }}" class="menu-link">
+            <a href="{{ route('ChangeRoleToMapel') }}" class="menu-link">
                 <i class='menu-icon bx bx-arrow-back'></i>
                 Kembali (Mengajar)
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('piket.*')) ? 'active' : '' }}">
+            <a href="{{ route('piket.listkelas') }}" class="menu-link">
                 <i class='menu-icon bx bx-show'></i>
                 Pantau Proses KBM
             </a>

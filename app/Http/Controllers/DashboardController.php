@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRole;
 use App\Models\EventJadwalPiketGuru;
 use App\Models\GuruMapel;
 use App\Models\JadwalMengajar;
@@ -42,5 +43,15 @@ class DashboardController extends Controller
             $sekarangHari = Carbon::parse(now())->translatedFormat('l, d F Y');
             return view('dashboard.home')->with('title', 'Dashboard')->with('sekarangHari', $sekarangHari);
         }
+    }
+    function ChangeRoleToPiket() {
+        Auth()->user()->role = UserRole::GuruPiket;
+        Auth()->user()->save();
+        return redirect()->route('dashboard');
+    }
+    function ChangeRoleToMapel() {
+        Auth()->user()->role = UserRole::GuruMapel;
+        Auth()->user()->save();
+        return redirect()->route('dashboard');
     }
 }

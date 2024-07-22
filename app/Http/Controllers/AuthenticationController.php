@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -31,12 +32,26 @@ class AuthenticationController extends Controller
     }
     public function logout(Request $request): RedirectResponse
     {
-        Auth::logout();
+        if (Auth()->user()->hasRole('guru piket')) {
+            Auth()->user()->role = UserRole::GuruMapel;
+            Auth()->user()->save();
+            Auth::logout();
 
-        $request->session()->invalidate();
+            $request->session()->invalidate();
 
-        $request->session()->regenerateToken();
+            $request->session()->regenerateToken();
 
-        return redirect('/');
+            return redirect('/');
+        } else {
+            # code...
+            Auth::logout();
+    
+            $request->session()->invalidate();
+    
+            $request->session()->regenerateToken();
+    
+            return redirect('/');
+        }
+        
     }
 }
