@@ -26,7 +26,7 @@ class JadwalMengajarController extends Controller
         $kelas = Kelas::find($kelas);
         $gurudanmapel = GuruMapel::where('kelas_id', $kelas->id)->get();
         $jadwalMengajar = JadwalMengajar::where('kelas_id', $kelas->id)->get();
-        // dd($gurudanmapel);
+        // dd($jadwalMengajar[4]->id);
         if (count($jadwalMengajar)) {
             foreach ($jadwalMengajar as $value) {
                 $events[] = [
@@ -119,9 +119,11 @@ class JadwalMengajarController extends Controller
     {
         $jadwalMengajarTemp = JadwalMengajar::where('event_jadwal_mengajar_id', $request->event_id)->get();
         $jadwalMengajar = JadwalMengajar::where('guru_mapel_id', $jadwalMengajarTemp[0]->guru_mapel_id)->get();
+    
 
         // dd($jadwalMengajar);
         foreach ($jadwalMengajar as $value) {
+            lapor_proses_kbm::where('jadwal_mengajar_id', $value->id)->delete() ;
             $value->event_jadwal_mengajar->delete();
             $value->delete();
         }
