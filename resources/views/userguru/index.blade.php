@@ -80,7 +80,7 @@
                 <div class="row">
                     <div class="col mb-3">
                         <label for="nip" class="form-label">NIP</label>
-                        <input type="text" id="nip" class="form-control" name="nomor_induk"
+                        <input type="number" id="nip" class="form-control" name="nomor_induk"
                             placeholder="masukan nomor induk pegawai guru" required />
                     </div>
                 </div>
