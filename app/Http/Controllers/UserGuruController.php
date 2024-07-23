@@ -23,7 +23,7 @@ class UserGuruController extends Controller
         $validatedData = $request->validate([
             'name'=>'required',
             'nomor_induk'=>'required|unique:users|numeric',
-            'email'=> 'required|email:rfc,dns|unique:users',
+            'email'=> 'required|email|unique:users',
             'password'=>'required|min:8',
             'role' => 'required'
         ]);
