@@ -86,6 +86,21 @@
                 </div>
                 <div class="row">
                     <div class="col mb-3">
+                        <label for="role" class="form-label">Role</label>
+                        <select name="role" id="role" class="form-select">
+                            <option value="#"> pilih role</option>
+                            @foreach ($role as $item)
+                            @if ($item->value == 'guru piket' || $item->value == 'siswa')
+                                
+                            @else
+                            <option value="{{ $item->value }}">{{ $item->value }}</option>
+                            @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
                         <label for="email" class="form-label">email</label>
                         <input type="email" id="email" class="form-control" name="email"
                             placeholder="email@test.test" required />
