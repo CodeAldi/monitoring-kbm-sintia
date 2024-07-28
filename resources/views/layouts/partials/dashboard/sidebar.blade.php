@@ -93,19 +93,19 @@
         </li>
         {{--! rombel dan kelas  !--}}
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Rombel dan kelas</span>
+            <span class="menu-header-text">Rombongan belajar dan kelas</span>
         </li>
         {{-- <li class="menu-item {{ (Request::RouteIs('jadwalpiket.*')) ? 'active' : '' }}"> --}}
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <i class='menu-icon bx bx-clipboard'></i>
-                Rombel siswa
+        <li class="menu-item {{ (Request::RouteIs('rombel.*')) ? 'active' : '' }}">
+            <a href="{{ route('rombel.index') }}" class="menu-link">
+                <i class='menu-icon bx bx-group'></i>
+                List Rombel
             </a>
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link">
-                <i class='menu-icon bx bx-clipboard'></i>
-                Pembagian Kelas Siswa
+                <i class='menu-icon bx bx-library'></i>
+                Pembagian Kelas
             </a>
         </li>
         {{--! penjadwalan !--}}
