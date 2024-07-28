@@ -60,9 +60,9 @@
             </a>
         </li>
         {{-- <li class="menu-item disabled {{ (Request::RouteIs('admin.siswa.*')) ? 'active' : '' }}"> --}}
-        <li class="menu-item disabled ">
+        <li class="menu-item {{ (Request::RouteIs('siswa.*')) ? 'active' : '' }}">
             {{-- <a href="{{ route('admin.siswa.index') }}" class="menu-link"> --}}
-                <a href="#" class="menu-link">
+                <a href="{{ route('siswa.index') }}" class="menu-link">
                     <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon" width="24" height="24" viewBox="0 0 24 24"
                         style="fill: rgb(140,153,167);transform: ;msFilter:;">
                         <circle cx="6" cy="4" r="2"></circle>

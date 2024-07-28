@@ -12,6 +12,7 @@ use App\Http\Controllers\LaporProsesKbmController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\PantauKbmController;
 use App\Http\Controllers\RppController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\UserGuruController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,10 @@ Route::controller(MapelController::class)->middleware(['auth','role:admin'])->gr
     Route::post('data-master/mata-pelajaran/store','store')->name('mapel.store');
     Route::put('data-master/mata-pelajaran/{mapel}/update','update')->name('mapel.update');
     Route::delete('data-master/mata-pelajaran/{mapel}/destroy','destroy')->name('mapel.destroy');
+});
+Route::controller(SiswaController::class)->middleware(['auth', 'role:admin'])->group(function(){
+    Route::get('data-master/siswa/index','index')->name('siswa.index');
+    Route::post('data-master/siswa/store','store')->name('siswa.store');
 });
 Route::controller(JurusanController::class)->middleware(['auth', 'role:admin'])->group(function(){
     Route::get('data-master/jurusan/index','index')->name('jurusan.index');
