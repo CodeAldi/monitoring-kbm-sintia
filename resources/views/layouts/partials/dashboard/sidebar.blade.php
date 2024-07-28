@@ -91,6 +91,23 @@
                 </a>
             </li>
         </li>
+        {{--! rombel dan kelas  !--}}
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Rombel dan kelas</span>
+        </li>
+        {{-- <li class="menu-item {{ (Request::RouteIs('jadwalpiket.*')) ? 'active' : '' }}"> --}}
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bx-clipboard'></i>
+                Rombel siswa
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bx-clipboard'></i>
+                Pembagian Kelas Siswa
+            </a>
+        </li>
         {{--! penjadwalan !--}}
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Piket</span>
