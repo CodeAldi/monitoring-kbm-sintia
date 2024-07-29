@@ -6,6 +6,10 @@ use App\Enums\UserRole;
 use App\Models\EventJadwalPiketGuru;
 use App\Models\GuruMapel;
 use App\Models\JadwalMengajar;
+use App\Models\Jurusan;
+use App\Models\Kelas;
+use App\Models\Mapel;
+use App\Models\Siswa;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -38,6 +42,15 @@ class DashboardController extends Controller
             $sekarangHari = Carbon::parse(now())->translatedFormat('l, d F Y');
             return view('dashboard.home')->with('title', 'Dashboard')->with('sekarangHari', $sekarangHari)->with('gurupiket',$gurupiket);
             
+        }
+        elseif (Auth()->user()->hasRole('admin')){
+            $mapel = Mapel::all()->count();
+            $jurusan = Jurusan::all()->count();
+            $kelas = Kelas::all()->count();
+            $guru = GuruMapel::all()->count();
+            $siswa = Siswa::all()->count();
+            $sekarangHari = Carbon::parse(now())->translatedFormat('l, d F Y');
+            return view('dashboard.home')->with('title', 'Dashboard')->with('sekarangHari', $sekarangHari)->with('mapel',$mapel)->with('jurusan', $jurusan)->with('kelas', $kelas)->with('guru', $guru)->with('siswa', $siswa);
         }
          else {
             $sekarangHari = Carbon::parse(now())->translatedFormat('l, d F Y');

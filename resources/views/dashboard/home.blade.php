@@ -1,6 +1,56 @@
 @extends('layouts.dashboard')
 @section('content')
 @if (Auth()->user()->hasRole('admin'))
+<div class="row mb-4">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Selamat Datang <strong>{{ Auth()->user()->name }}</strong>, rekap data
+                    admin sistem informasi monitoring : </h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <strong> {{ $sekarangHari }} </strong>
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Mapel : {{ $mapel }} </h5>
+
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card card-body">
+            <h5 class="card-title">Jurusan : {{ $jurusan }} </h5>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card card-body">
+            <h5 class="card-title">Kelas : {{ $kelas }} </h5>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card card-body">
+            <h5 class="card-title">Guru : {{ $guru }} </h5>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card card-body">
+            <h5 class="card-title">Siswa : {{ $siswa }} </h5>
+        </div>
+    </div>
+</div>
 {{-- memnuculkan baris khusus admin --}}
 @elseif (Auth()->user()->hasRole('wakil kurikulum'))
 {{-- baris kode khusus wakur --}}
@@ -102,6 +152,24 @@
     @endforelse
 </div>
 @elseif (Auth()->user()->hasRole('guru piket'))
+<div class="row mb-4">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Selamat Datang <strong>{{ Auth()->user()->name }}</strong> dihalaman guru piket </h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <strong> {{ $sekarangHari }} </strong>
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>
 {{-- baris kode khusus guru piket --}}
 @endif
 @endsection
