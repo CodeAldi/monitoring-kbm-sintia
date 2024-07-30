@@ -8,6 +8,7 @@ use App\Http\Controllers\JadwalMengajarController;
 use App\Http\Controllers\JadwalPiketGuruController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\LaporanKbmController;
 use App\Http\Controllers\LaporProsesKbmController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\PantauKbmController;
@@ -81,6 +82,10 @@ Route::controller(JadwalMengajarController::class)->middleware(['auth', 'role:wa
 Route::controller(RombelController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function () {
     Route::get('rombel/index','index')->name('rombel.index');
     Route::post('rombel/store','store')->name('rombel.store');
+});
+Route::controller(LaporanKbmController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){
+    Route::get('laporan-kbm/pilih-kelas','pilihkelas')->name('laporankbm.pilihkelas');
+    Route::get('laporan-kbm/{kelas}/pilih-mapel','pilihmapel')->name('laporankbm.pilihmapel');
 });
 
 Route::controller(JadwalPiketGuruController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){

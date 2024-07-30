@@ -127,8 +127,8 @@
                 Pantau KBM
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('laporankbm.*')) ? 'active' : '' }}">
+            <a href="{{ route('laporankbm.pilihkelas') }}" class="menu-link">
                 <i class='menu-icon bx bxs-report'></i>
                 Laporan KBM
             </a>
