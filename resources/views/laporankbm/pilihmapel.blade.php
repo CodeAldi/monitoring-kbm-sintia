@@ -22,10 +22,10 @@
                     <td>{{ $item->mapel->nama_mapel }}</td>
                     <td>{{ $item->user->name }}</td>
                     <td class="text-center">
-                        <form action="#" method="post">
+                        <form action="{{ route('laporankbm.index',['kelas'=>$item->id]) }}" method="post">
                             @csrf
                             <input type="text" name="mapelid" value="{{ $item->id }}" hidden readonly>
-                            <button type="submit" class="btn btn-success">Download PDF</button>
+                            <button type="submit" class="btn btn-success">Lihat Laporan</button>
                         </form>
                     </td>
                 </tr>
