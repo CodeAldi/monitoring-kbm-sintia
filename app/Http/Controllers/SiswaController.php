@@ -12,6 +12,11 @@ class SiswaController extends Controller
         return view ('siswa.index')->with('title','Data Master Siswa')->with('siswa',$siswa);
     }
     function store(Request $request) {
+        $validate = $request->validate([
+            'nis'=> 'required|unique:siswa',
+            'nama'=> 'required',
+            'jenis_kelamin'=>'required|gt:0',
+        ]);
         $siswa = new Siswa();
         $siswa->nis = $request->nis;
         $siswa->nama = $request->nama;

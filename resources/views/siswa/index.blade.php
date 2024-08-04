@@ -1,5 +1,15 @@
 @extends('layouts.dashboard')
 @section('content')
+
+@if ($errors->any())
+    
+<div class="alert alert-danger alert-dismissible " role="alert">
+    @foreach ($errors->all() as $error)
+        {{ $error }}
+    @endforeach
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 <div class="card">
     <div class="card-body">
         <div class="card-header d-flex">
@@ -31,7 +41,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="4" class="text-center bg-warning text-white">Data Kosong</td>
+                        <td colspan="5" class="text-center bg-warning text-white">Data Kosong</td>
                     </tr>
                     @endforelse
                 </tbody>
@@ -67,7 +77,7 @@
                     <div class="col mb-3">
                         <label for="jenkel" class="form-label">Jenis Kelamin</label>
                         <select name="jenis_kelamin" id="jenis_kelamin" class="form-select">
-                            <option value="#"> pilih jenis kelamin</option>
+                            <option value="0" hidden> pilih jenis kelamin</option>
                             <option value="laki laki">laki laki</option>
                             <option value="perempuan">perempuan</option>
                         </select>
@@ -84,4 +94,6 @@
     </div>
 </div>
 <!-- Modal untuk update -->
+{{-- alert error  --}}
+
 @endsection

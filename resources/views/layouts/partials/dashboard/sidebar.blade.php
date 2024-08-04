@@ -102,8 +102,8 @@
                 List Rombel
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('pembagian-kelas.*')) ? 'active' : '' }}">
+            <a href="{{ route('pembagian-kelas.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-library'></i>
                 Pembagian Kelas
             </a>
