@@ -33,8 +33,7 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     
-                                    <a class="dropdown-item" href="#modalUpdate{{ $loop->iteration }}"
-                                        data-bs-toggle="modal"><i class="bx bx-list-plus me-1"></i>
+                                    <a class="dropdown-item" href="{{ route('pembagian-rombel.create',['rombel'=>$item]) }}"><i class="bx bx-list-plus me-1"></i>
                                         Tambah /edit siswa</a>
                                     <a class="dropdown-item" href="#modalUpdate{{ $loop->iteration }}"
                                         data-bs-toggle="modal"><i class="bx bx-edit-alt me-1"></i>
