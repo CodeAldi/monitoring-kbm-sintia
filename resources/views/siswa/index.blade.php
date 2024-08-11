@@ -4,9 +4,15 @@
 @if ($errors->any())
     
 <div class="alert alert-danger alert-dismissible " role="alert">
-    @foreach ($errors->all() as $error)
-        {{ $error }}
-    @endforeach
+    @if ($errors->nama)
+        <p>nama tidak boleh kosong</p>
+    @endif
+    @if ($errors->nis)
+        <p>nis sudah ada</p>
+    @endif
+    @if ($errors->jenis_kelamin)
+        <p>jenis kelamin tidak boleh kosong</p>
+    @endif
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif

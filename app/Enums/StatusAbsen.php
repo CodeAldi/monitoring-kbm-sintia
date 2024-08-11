@@ -10,4 +10,5 @@ enum StatusAbsen: String
     case CUTI = "cuti";
     case IZIN = "izin";
     case ALFA = "alfa";
+    case BELUM = 'belum absen';
 }

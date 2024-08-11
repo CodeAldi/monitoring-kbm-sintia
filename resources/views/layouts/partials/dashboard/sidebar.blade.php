@@ -110,12 +110,18 @@
         </li>
         {{--! penjadwalan !--}}
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Piket</span>
+            <span class="menu-header-text">Piket & absen harian guru</span>
         </li>
         <li class="menu-item {{ (Request::RouteIs('jadwalpiket.*')) ? 'active' : '' }}">
             <a href="{{ route('jadwalpiket.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-clipboard'></i>
                 Jadwal Piket Guru
+            </a>
+        </li>
+        <li class="menu-item {{ (Request::RouteIs('absensiharianguru.*')) ? 'active' : '' }}">
+            <a href="{{ route('absensiharianguru.index') }}" class="menu-link">
+                <i class='menu-icon bx bx-clipboard'></i>
+                absen guru
             </a>
         </li>
         <li class="menu-header small text-uppercase">

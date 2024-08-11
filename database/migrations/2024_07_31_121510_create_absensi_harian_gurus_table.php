@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('absensi_harian_guru', function (Blueprint $table) {
             $table->id();
             $table->foreignId('users_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->enum('status',['hadir','terlambat','sakit','cuti','izin','alfa'])->default('alfa');
+            $table->enum('status',['hadir','terlambat','sakit','cuti','izin','alfa'])->nullable();
             $table->string('bukti')->nullable();
+            $table->string('keterangan');
+            $table->dateTime('tanggal_absensi');
             $table->timestamps();
         });
     }

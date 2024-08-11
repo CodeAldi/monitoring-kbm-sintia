@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbsensiHarianGuruController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruMapelController;
@@ -98,6 +99,9 @@ Route::controller(JadwalPiketGuruController::class)->middleware(['auth', 'role:w
     Route::get('jadwal-piket/index','index')->name('jadwalpiket.index');
     Route::post('jadwal-piket/store','store')->name('jadwalpiket.store');
     Route::post('jadwal-piket/delete','destroy')->name('jadwalpiket.delete');
+});
+Route::controller(AbsensiHarianGuruController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function () {
+    Route::get('absensi-harian-guru/index','index')->name('absensiharianguru.index');
 });
 
 Route::controller(PantauKbmController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){
