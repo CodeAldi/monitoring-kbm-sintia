@@ -15,7 +15,7 @@ class SiswaController extends Controller
         $validate = $request->validate([
             'nis'=> 'required|unique:siswa',
             'nama'=> 'required',
-            'jenis_kelamin'=>'required|gt:0',
+            'jenis_kelamin'=>'required|doesnt_start_with:0',
         ]);
         $siswa = new Siswa();
         $siswa->nis = $request->nis;

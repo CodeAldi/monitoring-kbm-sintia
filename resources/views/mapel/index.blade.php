@@ -1,5 +1,15 @@
 @extends('layouts.dashboard')
 @section('content')
+@if ($errors->any())
+
+<div class="alert alert-danger alert-dismissible " role="alert">
+    
+    @if ($errors->kode_mapel)
+        mapel / kode mapel sudah ada
+    @endif
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 <div class="card">
     <div class="card-header d-flex">
         <h5 class="card-title flex-grow-1">
@@ -23,8 +33,8 @@
                     @forelse ($mapel as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->nama_mapel }}</td>
-                        <td>{{ $item->kode_mapel }}</td>
+                        <td class="text-capitalize">{{ $item->nama_mapel }}</td>
+                        <td class="text-uppercase">{{ $item->kode_mapel }}</td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -70,14 +80,14 @@
                 <div class="row">
                     <div class="col mb-3">
                         <label for="nama_mapel" class="form-label">Nama Mata Pelajaran</label>
-                        <input type="text" id="nama_mapel" class="form-control" name="nama_mapel"
+                        <input type="text" id="nama_mapel" class="form-control text-capitalize" name="nama_mapel"
                             placeholder="masukan nama mapel" autofocus required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mb-3">
                         <label for="kode_mapel" class="form-label">Kode / singkatan Mapel</label>
-                        <input type="text" id="kode_mapel" class="form-control" name="kode_mapel"
+                        <input type="text" id="kode_mapel" class="form-control text-uppercase" name="kode_mapel"
                             placeholder="masukan kode atau singkatan mapel" required />
                     </div>
                 </div>

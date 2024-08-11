@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event_jadwal_piket_gurus');
+        Schema::dropIfExists('event_jadwal_piket_guru');
     }
 };

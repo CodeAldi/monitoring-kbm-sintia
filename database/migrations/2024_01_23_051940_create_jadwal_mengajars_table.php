@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('jadwal_mengajar', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('guru_mapel_id');
-            $table->foreignId('event_jadwal_mengajar_id');
-            $table->foreignId('kelas_id');
+            $table->foreignId('guru_mapel_id')->constrained('guru_mapel')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('event_jadwal_mengajar_id')->constrained('event_jadwal_mengajar')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('kelas_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->timestamps();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jadwal_mengajars');
+        Schema::dropIfExists('jadwal_mengajar');
     }
 };

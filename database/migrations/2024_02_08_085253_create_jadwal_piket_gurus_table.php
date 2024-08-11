@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('jadwal_piket_guru', function (Blueprint $table) {
             $table->id();
             $table->foreignId('users_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('event_jadwal_piket_guru_id');
+            $table->foreignId('event_jadwal_piket_guru_id')->constrained('event_jadwal_piket_guru')->onUpdate('cascade')->onDelete('cascade');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->timestamps();
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jadwal_piket_gurus');
+        Schema::dropIfExists('jadwal_piket_guru');
     }
 };
