@@ -28,10 +28,10 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->name }}</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td>{{ $absennya[$item->id]['hadir'] }}</td>
+                    <td>{{ $absennya[$item->id]['sakit'] }}</td>
+                    <td>{{ $absennya[$item->id]['izin'] }}</td>
+                    <td>{{ $absennya[$item->id]['alfa'] }}</td>
                 </tr>
                     
                 @empty

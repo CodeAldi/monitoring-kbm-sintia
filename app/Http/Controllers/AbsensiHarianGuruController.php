@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\StatusAbsen;
+use App\Enums\StatusKbm;
 use App\Enums\UserRole;
 use App\Models\AbsensiHarianGuru;
 use App\Models\User;
@@ -17,8 +18,15 @@ class AbsensiHarianGuruController extends Controller
 {
     function index() {
         $usergurunya = User::where('role', UserRole::GuruMapel)->get();
+        foreach ($usergurunya as $key => $value) {
+            $absensiguru[$value->id]['hadir'] = count(AbsensiHarianGuru::where('users_id',$value->id)->where('status',StatusAbsen::HADIR)->get());
+            $absensiguru[$value->id]['sakit'] = count(AbsensiHarianGuru::where('users_id',$value->id)->where('status','sakit')->get());
+            $absensiguru[$value->id]['izin'] = count(AbsensiHarianGuru::where('users_id',$value->id)->where('status','izin')->get());
+            $absensiguru[$value->id]['alfa'] = count(AbsensiHarianGuru::where('users_id',$value->id)->where('status','alfa')->get());
+        }
+        // dd($absensiguru);
         
-        return view('absenharianguru.index')->with('title','absen harian guru')->with('gurunya',$usergurunya);
+        return view('absenharianguru.index')->with('title','absen harian guru')->with('gurunya',$usergurunya)->with('absennya', $absensiguru);
     }
 
     function formAbsensiCreate() {
