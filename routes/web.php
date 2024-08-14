@@ -102,6 +102,13 @@ Route::controller(JadwalPiketGuruController::class)->middleware(['auth', 'role:w
 });
 Route::controller(AbsensiHarianGuruController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function () {
     Route::get('absensi-harian-guru/index','index')->name('absensiharianguru.index');
+    Route::get('absensi-harian-guru/create', 'formAbsensiCreate')->name('absensiharianguru.create');
+    Route::post('absensi-harian-guru/store','formAbsensiStore')->name('absensiharianguru.store');
+});
+Route::controller(AbsensiHarianGuruController::class)->middleware(['auth', 'role:guru mapel'])->group(function () {
+    Route::get('ambil-absensi-harian-guru/index',function() {
+        return view('absenharianguru.ambilabsen.index')->with('title','ambil absen');
+    })->name('ambilabsen.index');
 });
 
 Route::controller(PantauKbmController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){

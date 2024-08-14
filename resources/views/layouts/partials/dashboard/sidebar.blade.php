@@ -120,7 +120,7 @@
         </li>
         <li class="menu-item {{ (Request::RouteIs('absensiharianguru.*')) ? 'active' : '' }}">
             <a href="{{ route('absensiharianguru.index') }}" class="menu-link">
-                <i class='menu-icon bx bx-clipboard'></i>
+                <i class='menu-icon bx bx-list-check'></i>
                 absen guru
             </a>
         </li>
@@ -149,7 +149,7 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('ambilabsen.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-badge-check'></i>
                 Absensi Guru
             </a>
