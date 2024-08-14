@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\StatusAbsen;
 use App\Enums\UserRole;
 use App\Models\AbsensiHarianGuru;
 use App\Models\User;
@@ -10,6 +11,7 @@ use DatePeriod;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class AbsensiHarianGuruController extends Controller
 {
@@ -51,14 +53,31 @@ class AbsensiHarianGuruController extends Controller
         // dd($catatan);
         return redirect()->route('absensiharianguru.index');
     }
+
+    function AmbilAbsenGuruCreate() {
+        $nama = Auth()->user()->name;
+        $now = now();
+        $dataabsen = AbsensiHarianGuru::whereDate('tanggal_absensi',$now)->where('users_id',Auth()->user()->id)->get();
+        // dd($dataabsen[0]->status == 'hadir');
+        return view('absenharianguru.ambilabsen.index')->with('title', 'ambil absen')->with('nama',$nama)->with('dataabsen',$dataabsen[0]);
+    }
     
-    function store(Request $request) {
-        // $absen = new AbsensiHarianGuru();
-        // $absen->users_id;
-        // $absen->status;
-        // $absen->bukti;
-        // $absen->keterangan;
-        // $absen->tanggal_absensi;
-        return back();
+    function AmbilAbsenGuruStore(Request $request) {
+        $validatedData = $request->validate(
+            [
+                'catatan','bukti' => 'required',
+                'catatan' => 'string',
+                'bukti' => 'image',
+            ]
+        );
+        $path = Storage::disk('local')->put('public',$request->bukti);
+        $now = now();
+        $absen = AbsensiHarianGuru::whereDate('tanggal_absensi', $now)->where('users_id', Auth()->user()->id)->get();
+        // dd($absen[0]);
+        $absen[0]->status = StatusAbsen::HADIR;
+        $absen[0]->bukti = $path;
+        $absen[0]->keterangan = $request->catatan;
+        $absen[0]->save();
+        return redirect()->route('ambilabsen.index');
     }
 }
