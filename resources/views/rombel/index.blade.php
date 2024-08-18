@@ -24,7 +24,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->nama_group_rombongan_belajar }}</td>
-                        <td>0</td>
+                        <td>{{ $datasiswa[$item->id] }}</td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -34,7 +34,7 @@
                                 <div class="dropdown-menu">
                                     
                                     <a class="dropdown-item" href="{{ route('pembagian-rombel.create',['rombel'=>$item]) }}"><i class="bx bx-list-plus me-1"></i>
-                                        Tambah /edit siswa</a>
+                                        Tambahkan siswa ke dalam rombel</a>
                                     <a class="dropdown-item" href="#modalUpdate{{ $loop->iteration }}"
                                         data-bs-toggle="modal"><i class="bx bx-edit-alt me-1"></i>
                                         Edit nama group</a>
@@ -51,7 +51,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="3" class="text-center bg-warning text-white">Data Kosong</td>
+                        <td colspan="4" class="text-center bg-warning text-white">Data Kosong</td>
                     </tr>
                     @endforelse
                 </tbody>
@@ -72,7 +72,7 @@
                 <div class="row">
                     <div class="col mb-3">
                         <label for="nama" class="form-label">Nama / kode rombel</label>
-                        <input type="text" id="nama" class="form-control" name="nama" placeholder="masukan nama siswa"
+                        <input type="text" id="nama" class="form-control" name="nama" placeholder="Nama / kode rombel"
                             autofocus required />
                     </div>
                 </div>

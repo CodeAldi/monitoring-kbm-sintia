@@ -30,7 +30,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth')->name('dashboard');
 Route::get('/rolepiket',[DashboardController::class, 'ChangeRoleToPiket'])->middleware(['auth', 'role:guru mapel'])->name('ChangeRoleToPiket');
 Route::get('/rolemapel',[DashboardController::class, 'ChangeRoleToMapel'])->middleware(['auth', 'role:guru piket'])->name('ChangeRoleToMapel');
@@ -88,6 +87,7 @@ Route::controller(RombelController::class)->middleware(['auth', 'role:wakil kuri
 Route::controller(PembagianRombelSiswaController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){
     Route::get('pembagian-kelas','index')->name('pembagian-kelas.index');
     Route::get('pembagian-rombel/{rombel}/create','create')->name('pembagian-rombel.create');
+    Route::post('pembagian-rombel/store','store')->name('pembagian-rombel.store');
 });
 Route::controller(LaporanKbmController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){
     Route::get('laporan-kbm/pilih-kelas','pilihkelas')->name('laporankbm.pilihkelas');
