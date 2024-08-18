@@ -31,7 +31,7 @@
 
                 @forelse ($datasiswa as $item)
                 <div class="form-check mt-3 col-4">
-                    <input class="form-check-input" name="siswa-{{ $loop->iteration }}" type="checkbox" value="{{ $item->nis }}" id="{{ $item->nis }}" />
+                    <input class="form-check-input" name="siswa-{{ $loop->iteration }}" type="checkbox" value="{{ $item->id }}" id="{{ $item->nis }}" />
                     <label class="form-check-label" for="{{ $item->nis }}"> {{ $item->nis }} - {{ $item->nama }}
                     </label>
                 </div>
