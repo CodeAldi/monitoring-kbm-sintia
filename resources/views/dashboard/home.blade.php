@@ -82,7 +82,7 @@
                         @forelse ($gurupiket as $item)
                         <li>{{ $item->title }}</li>
                         @empty
-                        <li>Data masih kosong atau sekarang bukan hari kerja</li>
+                        {{-- <li>Data masih kosong atau sekarang bukan hari kerja</li> --}}
                         @endforelse
                     </ol>
                 </div>
