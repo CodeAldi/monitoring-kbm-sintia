@@ -27,7 +27,7 @@
                                     @if ($itemrombelkelas->kelas_id == $item->id)
                                         {{ $itemrombelkelas->rombel->nama_group_rombongan_belajar }}
                                     @else
-                                    <span class="text-secondary">Belum diisi oleh rombel manapun</span>
+                                    
                                         
                                     @endif
                                 @empty
