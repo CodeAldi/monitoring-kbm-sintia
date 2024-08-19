@@ -54,7 +54,15 @@
                             <tr>
                                 <td>1</td>
                                 <td>absen siswa</td>
-                                <td><span class="badge bg-label-secondary">no data</span></td>
+                                <td>
+                                    @if (count($dataabsen) > 0)
+                                    <span class="badge bg-label-success">Selesai</span>
+                                        
+                                    @else
+                                    <span class="badge bg-label-secondary">belum ambil absen</span>
+                                        
+                                    @endif
+                                </td>
                                 <td>
                                     {{-- <div class="row g-2">
                                         <div class="btn btn-success rounded-pill">tombol</div>
