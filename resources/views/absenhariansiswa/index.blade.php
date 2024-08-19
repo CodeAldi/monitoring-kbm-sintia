@@ -9,7 +9,13 @@
                     <h5 class="card-title">{{ $title }}</h5>
                 </div>
                 <div class="col-6 d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary"><i class='menu-icon bx bx-save'></i> Simpan</button>
+                    <button type="submit" class="btn btn-primary" @if (count($dataabsen)>0)
+                        @disabled(true)
+                    @endif><i class='menu-icon bx bx-save'></i>@if (count($dataabsen)>0)
+                        absen telah berhasil disimpan dan tidak bisa diedit lagi
+                    @else
+                        Simpan
+                    @endif</button>
                 </div>
             </div>
             <table class="table mt-1">
