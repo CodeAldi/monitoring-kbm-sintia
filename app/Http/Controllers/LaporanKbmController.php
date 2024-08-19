@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AbsensiHarianGuru;
 use App\Models\GuruMapel;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
@@ -26,7 +27,9 @@ class LaporanKbmController extends Controller
                 $final[$key] = lapor_proses_kbm::where('jadwal_mengajar_id',$value->id)->get(); 
             }
         }
-        // dd($final[0][0]->jadwal_mengajar->gurumapel->user->name);
-        return view('laporankbm.index')->with('title','laporan')->with('data',$final)->with('kelas',$request->kelas);
+        $dataabsenguru = AbsensiHarianGuru::where('users_id', $final[0][0]->jadwal_mengajar->gurumapel->user->id)->get();
+
+        // dd($dataabsenguru[0]->tanggal_absensi == $final[0][0]->tanggal);
+        return view('laporankbm.index')->with('title','laporan')->with('data',$final)->with('kelas',$request->kelas)->with('dataabsenguru',$dataabsenguru);
     }
 }

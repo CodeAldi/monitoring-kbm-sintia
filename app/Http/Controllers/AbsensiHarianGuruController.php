@@ -78,10 +78,12 @@ class AbsensiHarianGuruController extends Controller
                 'bukti' => 'image',
             ]
         );
-        $path = Storage::disk('local')->put('public',$request->bukti);
+        $pathlama = Storage::disk('local')->put('public',$request->bukti);
+        $path = substr($pathlama,7);
+        // dd($path,$pathbaru);
         $now = now();
         $absen = AbsensiHarianGuru::whereDate('tanggal_absensi', $now)->where('users_id', Auth()->user()->id)->get();
-        // dd($absen[0]);
+        // // dd($absen[0]);
         $absen[0]->status = StatusAbsen::HADIR;
         $absen[0]->bukti = $path;
         $absen[0]->keterangan = $request->catatan;
