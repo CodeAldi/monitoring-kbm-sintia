@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
+use App\Models\PembagianRombelKelas;
 use App\Models\PembagianRombelSiswa;
 use App\Models\Rombel;
 use App\Models\Siswa;
@@ -11,7 +13,20 @@ class PembagianRombelSiswaController extends Controller
 {
     function index()
     {
-        return view('pembagianrombel.index')->with('title', 'pembagian kelas berdasarkan rombel');
+        $dataKelas = Kelas::all();
+        $dataRombel= Rombel::all();
+        $dataKelasdanRombel = PembagianRombelKelas::all();
+        // dd($dataKelas);
+        return view('pembagianrombel.index')->with('title', 'pembagian kelas berdasarkan rombel')->with('rombel',$dataRombel)->with('dataKelas',$dataKelas)->with('dataKelasdanRombel', $dataKelasdanRombel);
+    }
+    function rombelKelasStore(Request $request) {
+        $rombel = $request->rombel;
+        $kelas = $request->kelas;
+        $pembagianrombelkelas = new PembagianRombelKelas();
+        $pembagianrombelkelas->rombongan_belajar_id = $rombel;
+        $pembagianrombelkelas->kelas_id = $kelas;
+        $pembagianrombelkelas->save();
+        return back();
     }
     function create($rombel)
     {

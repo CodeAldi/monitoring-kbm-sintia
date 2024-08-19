@@ -88,6 +88,7 @@ Route::controller(PembagianRombelSiswaController::class)->middleware(['auth', 'r
     Route::get('pembagian-kelas','index')->name('pembagian-kelas.index');
     Route::get('pembagian-rombel/{rombel}/create','create')->name('pembagian-rombel.create');
     Route::post('pembagian-rombel/store','store')->name('pembagian-rombel.store');
+    Route::post('pembagian-rombel-kelas/store', 'rombelKelasStore')->name('pembagianRombelKelas.store');
 });
 Route::controller(LaporanKbmController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){
     Route::get('laporan-kbm/pilih-kelas','pilihkelas')->name('laporankbm.pilihkelas');
