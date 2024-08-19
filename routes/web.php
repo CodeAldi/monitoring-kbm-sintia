@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AbsensiHarianGuruController;
+use App\Http\Controllers\AbsensiHarianSiswaController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruMapelController;
@@ -118,6 +119,10 @@ Route::controller(PantauKbmController::class)->middleware(['auth', 'role:guru pi
     Route::get('/piket/pantau-kbm/list-kelas','indexKelas')->name('piket.listkelas');
 });
 
+Route::controller(AbsensiHarianSiswaController::class)->middleware(['auth', 'role:guru mapel'])->group(function(){
+    Route::get('absen-siswa/index','index')->name('absensiswa.index');
+    Route::post('absen-suswa/store','store')->name('absensiswa.store');
+});
 
 Route::controller(RppController::class)->middleware(['auth', 'role:guru mapel'])->group(function(){
     Route::get('rpp/index','index')->name('rpp.index');

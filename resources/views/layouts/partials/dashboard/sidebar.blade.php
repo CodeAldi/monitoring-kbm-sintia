@@ -164,8 +164,8 @@
                 RPP
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('absensiswa.*')) ? 'active' : '' }}">
+            <a href="{{ route('absensiswa.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-user-check'></i>
                 Absensi Siswa
             </a>
