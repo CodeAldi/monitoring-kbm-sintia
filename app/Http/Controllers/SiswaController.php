@@ -9,8 +9,12 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class SiswaController extends Controller
 {
-    function import() {
-        Excel::import(new SiswaImport,'siswa.xlsx');
+    function import(Request $request) {
+        $validatedData = $request->validate([
+            'siswaExcel'=> 'required|file|extensions:xls,xlsx,csv',
+        ]);
+        Excel::import(new SiswaImport,$request->file('siswaExcel'));
+        return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil ditambah/update melalui file excel');
         
     }
 

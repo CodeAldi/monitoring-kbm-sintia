@@ -1,5 +1,12 @@
 @extends('layouts.dashboard')
 @section('content')
+@push('page-css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+    
+@endpush
 
 @if ($errors->any())
     
@@ -15,7 +22,7 @@
 </div>
 @elseif (session()->has('success'))
     <div class="alert alert-success alert-dismissible " role="alert">
-        <h5>data siswa berhasil ditambahkan</h5>
+        <h5>{{ session('success') }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
@@ -31,7 +38,7 @@
                     data-bs-target="#modalCreate">Tambah Manual</button>
             </div>
             <div class="text-wrap">
-                <table class="table">
+                <table class="table" id="tableSiswa">
                     <thead>
                         <tr>
                             <th>no</th>
@@ -63,6 +70,11 @@
             </div>
         </div>
     </div>
+    <script>
+        let table = new DataTable('#tableSiswa', {
+        // options
+        });
+    </script>
 @endsection
 <!-- Modal untuk create -->
 <div class="modal fade" id="modalCreate" tabindex="-1" aria-hidden="true">
@@ -114,26 +126,17 @@
 {{-- modal untuk upload excel --}}
 <div class="modal fade" id="modalUpload" data-bs-backdrop="static" tabindex="-1">
     <div class="modal-dialog">
-        <form class="modal-content">
+        <form class="modal-content" action="{{ route('siswa.import') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="modal-header">
-                <h5 class="modal-title" id="modalUploadTitle">Modal title</h5>
+                <h5 class="modal-title text-capitaliza" id="modalUploadTitle">Upload file excel</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col mb-3">
-                        <label for="nameBackdrop" class="form-label">Name</label>
-                        <input type="text" id="nameBackdrop" class="form-control" placeholder="Enter Name" />
-                    </div>
-                </div>
-                <div class="row g-2">
-                    <div class="col mb-0">
-                        <label for="emailBackdrop" class="form-label">Email</label>
-                        <input type="text" id="emailBackdrop" class="form-control" placeholder="xxxx@xxx.xx" />
-                    </div>
-                    <div class="col mb-0">
-                        <label for="dobBackdrop" class="form-label">DOB</label>
-                        <input type="text" id="dobBackdrop" class="form-control" placeholder="DD / MM / YY" />
+                    <div class="col">
+                        <label for="excel" class="form-label">file excel</label>
+                        <input type="file" id="excel" name="siswaExcel" class="form-control" placeholder="upload file excel" />
                     </div>
                 </div>
             </div>
@@ -141,7 +144,7 @@
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                     Close
                 </button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Upload</button>
             </div>
         </form>
     </div>
