@@ -20,6 +20,8 @@ class SiswaImport implements ToCollection, WithHeadingRow
 
             $siswa[$key] = Siswa::updateOrCreate([
                 'nis' => $value['nis'],
+            ],[
+                'nis' => $value['nis'],
                 'nama' => $value['nama'],
                 'jenis_kelamin' => $value['jenis_kelamin'],
             ]);

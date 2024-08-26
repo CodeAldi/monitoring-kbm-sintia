@@ -10,4 +10,5 @@ class Siswa extends Model
     use HasFactory;
     protected $table = 'siswa';
     protected $guarded = ['id'];
+    protected $primaryKey = 'nis';
 }

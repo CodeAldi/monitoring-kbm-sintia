@@ -11,13 +11,9 @@
 @if ($errors->any())
     
 <div class="alert alert-danger alert-dismissible " role="alert">
-    @if ($errors->nama)
-        <p>nama tidak boleh kosong</p>
-    @elseif ($errors->nis)
-        <p>nis sudah ada</p>
-    @elseif ($errors->jenis_kelamin)
-        <p>jenis kelamin tidak boleh kosong</p>
-    @endif
+    @foreach ($errors as $error)
+        <p>{{ $error }}</p>
+    @endforeach
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @elseif (session()->has('success'))
@@ -41,7 +37,6 @@
                 <table class="table" id="tableSiswa">
                     <thead>
                         <tr>
-                            <th>no</th>
                             <th>nis</th>
                             <th>nama</th>
                             <th>jenis kelamin</th>
@@ -51,7 +46,6 @@
                     <tbody>
                         @forelse ($siswa as $item)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nis }}</td>
                             <td>{{ $item->nama }}</td>
                             <td>{{ $item->jenis_kelamin }}</td>
