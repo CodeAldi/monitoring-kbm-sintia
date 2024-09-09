@@ -20,7 +20,7 @@ class SiswaController extends Controller
         
     }
     function template() {
-        dd('test');
+        dd('test dua');
         // return Excel::download(new SiswaExport,'Siswa.xlsx');
     }
 
