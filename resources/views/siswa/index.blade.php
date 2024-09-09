@@ -66,7 +66,7 @@
     </div>
     <script>
         let table = new DataTable('#tableSiswa', {
-        // options
+            
         });
     </script>
 @endsection
@@ -127,10 +127,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="row">
+                <div class="row mb-2">
                     <div class="col">
                         <label for="excel" class="form-label">file excel</label>
                         <input type="file" id="excel" name="siswaExcel" class="form-control" placeholder="upload file excel" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p><i class='bx bx-info-circle'></i>Wajib menggunakan template, download file template <a href="{{ route('siswa.template') }}" class="btn-sm btn-info">Disini</a> </p>
                     </div>
                 </div>
             </div>

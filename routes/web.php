@@ -50,6 +50,7 @@ Route::controller(SiswaController::class)->middleware(['auth', 'role:admin'])->g
     Route::get('data-master/siswa/index','index')->name('siswa.index');
     Route::post('data-master/siswa/store','store')->name('siswa.store');
     Route::post('data-master/siswa/import','import')->name('siswa.import');
+    Route::get('data-master/siswa/template','template')->name('siswa.template');
 });
 Route::controller(JurusanController::class)->middleware(['auth', 'role:admin'])->group(function(){
     Route::get('data-master/jurusan/index','index')->name('jurusan.index');

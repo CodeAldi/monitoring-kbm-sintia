@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SiswaExport;
 use App\Imports\SiswaImport;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SiswaController extends Controller
@@ -16,6 +18,9 @@ class SiswaController extends Controller
         Excel::import(new SiswaImport,$request->file('siswaExcel'));
         return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil ditambah/update melalui file excel');
         
+    }
+    function template() {
+        return Excel::download(new SiswaExport,'Siswa.xlsx');
     }
 
     function index() {
