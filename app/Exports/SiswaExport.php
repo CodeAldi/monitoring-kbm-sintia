@@ -3,15 +3,15 @@
 namespace App\Exports;
 
 use App\Models\Siswa;
+use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class SiswaExport implements FromCollection
+class SiswaExport implements FromArray
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    function array(): array
     {
-        
+        return [
+            ['#', 'nis', 'nama', 'jenis_kelamin'],
+        ];        
     }
 }

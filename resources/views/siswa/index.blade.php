@@ -56,7 +56,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="5" class="text-center bg-warning text-white">Data Kosong</td>
+                            <td colspan="6" class="text-center bg-warning text-white">Data Kosong</td>
                         </tr>
                         @endforelse
                     </tbody>
@@ -64,11 +64,20 @@
             </div>
         </div>
     </div>
+    @if (count($siswa)>0)
     <script>
         let table = new DataTable('#tableSiswa', {
             
         });
+        console.log('siswa > 0 = true');
     </script>
+        
+    @else
+    <script>
+        console.log('siswa > 0 = false');
+        
+    </script>     
+    @endif
 @endsection
 <!-- Modal untuk create -->
 <div class="modal fade" id="modalCreate" tabindex="-1" aria-hidden="true">

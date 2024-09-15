@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
+use function PHPUnit\Framework\isEmpty;
+
 class SiswaController extends Controller
 {
     function import(Request $request) {
@@ -20,8 +22,8 @@ class SiswaController extends Controller
         
     }
     function template() {
-        dd('test dua');
-        // return Excel::download(new SiswaExport,'Siswa.xlsx');
+        // dd('test dua');
+        return Excel::download(new SiswaExport,'Siswa.xlsx');
     }
 
     function index() {
