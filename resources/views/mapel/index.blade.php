@@ -15,8 +15,10 @@
         <h5 class="card-title flex-grow-1">
             List Mata Pelajaran
         </h5>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-            data-bs-target="#modalCreate">Tambah</button>
+        <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#modalupload"><i
+                class='bx bx-spreadsheet'></i> Tambah melalui file excel</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreate">Tambah
+            Manual</button>
     </div>
     <div class="card-body">
         <div class="text-wrap">
@@ -141,3 +143,37 @@
 @empty
     
 @endforelse
+
+{{-- modal upload exce --}}
+<div class="modal fade" id="modalUpload" data-bs-backdrop="static" tabindex="-1">
+    <div class="modal-dialog">
+        <form class="modal-content" action="{{ route('siswa.import') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-header">
+                <h5 class="modal-title text-capitaliza" id="modalUploadTitle">Upload file excel</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <label for="excel" class="form-label">file excel</label>
+                        <input type="file" id="excel" name="siswaExcel" class="form-control"
+                            placeholder="upload file excel" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p><i class='bx bx-info-circle'></i>Wajib menggunakan template, download file template <a
+                                href="{{ route('mapel.template') }}" class="btn-sm btn-info">Disini</a> </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </div>
+        </form>
+    </div>
+</div>

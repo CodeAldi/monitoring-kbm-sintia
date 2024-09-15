@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mapel;
+use App\Exports\MapelExport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MapelController extends Controller
 {
     function import() {
         
+    }
+    function template() {
+        return Excel::download(new MapelExport, 'Mapel.xlsx');
     }
     function index() {
         $mapel = Mapel::latest()->get();

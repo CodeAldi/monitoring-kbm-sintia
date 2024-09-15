@@ -10,4 +10,5 @@ class Mapel extends Model
     use HasFactory;
     protected $table = 'mapel';
     protected $guarded = ['id'];
+    protected $fillable = ['nama_mapel','kode_mapel'];
 }
