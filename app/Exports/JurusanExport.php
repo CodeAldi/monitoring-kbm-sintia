@@ -2,14 +2,25 @@
 
 namespace App\Exports;
 
-use Maatwebsite\Excel\Concerns\FromArray;
+use App\Models\Jurusan;
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class JurusanExport implements FromArray
+
+class JurusanExport implements FromCollection, WithHeadings
 {
-    function array(): array
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function collection()
+    {
+        return Jurusan::select('nama_mapel', 'kode_mapel')->get();
+    }
+    public function headings(): array
     {
         return [
-            ['nama_jurusan','kode_jurusan'],
+            'nama_mapel',
+            'kode_mapel',
         ];
     }
 }
