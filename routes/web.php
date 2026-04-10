@@ -59,6 +59,8 @@ Route::controller(JurusanController::class)->middleware(['auth', 'role:admin'])-
     Route::post('data-master/jurusan/store', 'store')->name('jurusan.store');
     Route::put('data-master/jurusan/{jurusan}/update', 'update')->name('jurusan.update');
     Route::delete('data-master/jurusan/{jurusan}/destroy', 'destroy')->name('jurusan.destroy');
+    Route::get('data-master/jurusan/template', 'template')->name('jurusan.template');
+    Route::post('data-master/jurusan/template/import', 'import')->name('jurusan.import');
 });
 Route::controller(KelasController::class)->middleware(['auth', 'role:admin'])->group(function(){
     Route::get('data-master/kelas/index','index')->name('kelas.index');
