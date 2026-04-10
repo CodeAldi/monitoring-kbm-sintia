@@ -147,7 +147,7 @@
 {{-- modal upload exce --}}
 <div class="modal fade" id="modalUpload" data-bs-backdrop="static" tabindex="-1">
     <div class="modal-dialog">
-        <form class="modal-content" action="{{ route('siswa.import') }}" method="POST" enctype="multipart/form-data">
+        <form class="modal-content" action="{{ route('mapel.import') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="modal-header">
                 <h5 class="modal-title text-capitaliza" id="modalUploadTitle">Upload file excel</h5>

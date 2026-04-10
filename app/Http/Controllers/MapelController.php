@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Mapel;
 use App\Exports\MapelExport;
+use App\Imports\MapelImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class MapelController extends Controller
 {
-    function import() {
-        
+    function import(Request $request)
+    {
+        $validatedData = $request->validate([
+            'siswaExcel' => 'required|file|extensions:xls,xlsx,csv',
+        ]);
+        Excel::import(new MapelImport, $request->file('siswaExcel'));
+        return redirect()->route('mapel.index')->with('success', 'Data mapel berhasil ditambah/update melalui file excel');
     }
     function template() {
         return Excel::download(new MapelExport, 'Mapel.xlsx');

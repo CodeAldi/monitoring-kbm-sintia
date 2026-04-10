@@ -46,6 +46,7 @@ Route::controller(MapelController::class)->middleware(['auth','role:admin'])->gr
     Route::put('data-master/mata-pelajaran/{mapel}/update','update')->name('mapel.update');
     Route::delete('data-master/mata-pelajaran/{mapel}/destroy','destroy')->name('mapel.destroy');
     Route::get('data-master/mata-pelajaran/template','template')->name('mapel.template');
+    Route::post('data-master/mata-pelajaran/template/import', 'import')->name('mapel.import');
 });
 Route::controller(SiswaController::class)->middleware(['auth', 'role:admin'])->group(function(){
     Route::get('data-master/siswa/index','index')->name('siswa.index');
@@ -76,6 +77,7 @@ Route::controller(GuruMapelController::class)->middleware(['auth','role:wakil ku
     Route::post('pembagian-tugas-mengajar/guru-mapel/store','store')->name('gurumapel.store');
     Route::put('pembagian-tugas-mengajar/guru-mapel/{guruMapel}/update','update')->name('gurumapel.update');
     Route::delete('pembagian-tugas-mengajar/guru-mapel/{guruMapel}/destroy','destroy')->name('gurumapel.destroy');
+    
 });
 
 Route::controller(JadwalMengajarController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){
