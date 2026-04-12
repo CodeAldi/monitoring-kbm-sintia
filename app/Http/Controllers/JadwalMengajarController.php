@@ -16,7 +16,7 @@ class JadwalMengajarController extends Controller
     function pilihkelas()
     {
         $kelas = Kelas::all();
-        return view('jadwalmengajar.pilihkelas')->with('title', 'Pilih Kelas')->with('kelas', $kelas);
+        return view('jadwalMengajar.pilihkelas')->with('title', 'Pilih Kelas')->with('kelas', $kelas);
     }
     /**
      * Display a listing of the resource.
@@ -39,7 +39,7 @@ class JadwalMengajarController extends Controller
         } else {
             $events[] = [];
         }
-        return view('jadwalmengajar.index')->with('title', 'Jadwal Mengajar Guru')->with('kelas', $kelas)->with('gurudanmapel', $gurudanmapel)->with('events', $events);
+        return view('jadwalMengajar.index')->with('title', 'Jadwal Mengajar Guru')->with('kelas', $kelas)->with('gurudanmapel', $gurudanmapel)->with('events', $events);
     }
 
     /**
