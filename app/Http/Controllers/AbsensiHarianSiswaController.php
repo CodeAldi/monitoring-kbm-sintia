@@ -18,13 +18,16 @@ class AbsensiHarianSiswaController extends Controller
         $mapelygdiampu = GuruMapel::where('users_id',$guruid)->get();
         if (count($mapelygdiampu)>0) {
             foreach ($mapelygdiampu as $key => $value) {
-                $jadwalmengajar = JadwalMengajar::where('guru_mapel_id',$value->id)->where('tanggal_mulai',$now)->get();
-            }
+                $jadwalmengajar[] = JadwalMengajar::where('guru_mapel_id',$value->id)->where('tanggal_mulai',$now)->get();
+                }
         } else {
             $jadwalmengajar = null;
         }
-        $datarombelkelas = PembagianRombelKelas::where('kelas_id', $jadwalmengajar[0]->kelas_id)->get();
+        // dd($jadwalmengajar[0][0]);
+
+        $datarombelkelas = PembagianRombelKelas::where('kelas_id', $jadwalmengajar[0][0]->kelas_id)->get();
         $datasiswa = PembagianRombelSiswa::where('rombongan_belajar_id', $datarombelkelas[0]->rombongan_belajar_id)->get();
+        // dd($datarombelkelas[0]->rombongan_belajar_id, $datasiswa[0]->siswa);
         $dataabsen = AbsensiHarianSiswa::where('guru_mapel_id', $mapelygdiampu[0]->id)->get();
         
         // dd($dataabsen);

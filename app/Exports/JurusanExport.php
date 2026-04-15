@@ -14,13 +14,13 @@ class JurusanExport implements FromCollection, WithHeadings
      */
     public function collection()
     {
-        return Jurusan::select('nama_mapel', 'kode_mapel')->get();
+        return Jurusan::select('nama_jurusan', 'kode_jurusan')->get();
     }
     public function headings(): array
     {
         return [
-            'nama_mapel',
-            'kode_mapel',
+            'nama_jurusan',
+            'kode_jurusan',
         ];
     }
 }

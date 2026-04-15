@@ -13,7 +13,7 @@
             @forelse ($jadwalMengajar as $itemJadwalMengajar)
             @if ($itemListKelas->id == $itemJadwalMengajar->kelas_id)
 
-            <div class="card">
+            <div class="card mb-2 shadow">
                 <div class="card-body">
                     <h5 class="card-title text-center">{{ $itemListKelas->nama_kelas }}</h5>
                     <p class="card-subtitle text-center">

@@ -47,7 +47,7 @@
                                 @if ($itemabsentguru->tanggal_absensi == $item[0]->tanggal)
                                     <p>status : {{ $itemabsentguru->status }}</p>
                                     <br>
-                                    <img src="{{ asset('storage/'.$itemabsentguru->bukti) }}" alt="foto bukti ambil absen guru" class="img-thumbnail">
+                                    <img src="{{ asset('storage/'.$itemabsentguru->bukti) }}" alt="foto bukti ambil absen guru" class="img-thumbnail w-50">
                                 @else
                                     
                                 @endif

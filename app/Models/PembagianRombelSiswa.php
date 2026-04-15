@@ -19,6 +19,6 @@ class PembagianRombelSiswa extends Model
      */
     public function siswa(): BelongsTo
     {
-        return $this->belongsTo(Siswa::class, 'siswa_id');
+        return $this->belongsTo(Siswa::class,'siswa_id');
     }
 }

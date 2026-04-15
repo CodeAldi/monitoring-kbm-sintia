@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UserRole;
+use App\Http\Middleware\Role;
 use App\Models\EventJadwalPiketGuru;
 use App\Models\GuruMapel;
 use App\Models\JadwalMengajar;
@@ -10,6 +11,7 @@ use App\Models\Jurusan;
 use App\Models\Kelas;
 use App\Models\Mapel;
 use App\Models\Siswa;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -47,7 +49,7 @@ class DashboardController extends Controller
             $mapel = Mapel::all()->count();
             $jurusan = Jurusan::all()->count();
             $kelas = Kelas::all()->count();
-            $guru = GuruMapel::all()->count();
+            $guru = User::where('role',UserRole::GuruMapel)->count();
             $siswa = Siswa::all()->count();
             $sekarangHari = Carbon::parse(now())->translatedFormat('l, d F Y');
             return view('dashboard.home')->with('title', 'Dashboard')->with('sekarangHari', $sekarangHari)->with('mapel',$mapel)->with('jurusan', $jurusan)->with('kelas', $kelas)->with('guru', $guru)->with('siswa', $siswa);

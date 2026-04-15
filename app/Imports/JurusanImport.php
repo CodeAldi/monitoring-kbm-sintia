@@ -13,6 +13,7 @@ class JurusanImport implements ToCollection, WithHeadingRow
     function collection(Collection $collection)
     {
         foreach ($collection as $key => $value) {
+            // dd($value);
             $siswa[$key] = Jurusan::updateOrCreate(
                 [
                     'nama_jurusan' => $value['nama_jurusan'],
