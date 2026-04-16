@@ -102,6 +102,7 @@ Route::controller(LaporanKbmController::class)->middleware(['auth', 'role:wakil 
     Route::get('laporan-kbm/pilih-kelas','pilihkelas')->name('laporankbm.pilihkelas');
     Route::get('laporan-kbm/{kelas}/pilih-mapel','pilihmapel')->name('laporankbm.pilihmapel');
     Route::post('laporan-kbm/{kelas}/render','index')->name('laporankbm.index');
+    Route::get('laporan-kbm/download','exportpdf')->name('laporankbm.pdf');
 });
 
 Route::controller(JadwalPiketGuruController::class)->middleware(['auth', 'role:wakil kurikulum'])->group(function(){

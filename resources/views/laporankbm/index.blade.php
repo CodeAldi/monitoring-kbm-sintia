@@ -4,9 +4,9 @@
     <div class="col">
         <a href="{{ route('laporankbm.pilihmapel',['kelas'=>$kelas]) }}" class="btn btn-primary">kembali</a>
     </div>
-    {{-- <div class="col d-flex justify-content-end">
-        <a href="#" class="btn btn-success">download pdf</a>
-    </div> --}}
+    <div class="col d-flex justify-content-end">
+        <a href="{{ route('laporankbm.pdf', ['mapelid' => request('mapelid'), 'kelas' => $kelas]) }}" class="btn btn-success">download pdf</a>
+    </div>
 </div>
 <div class="card">
     <div class="card-body">
