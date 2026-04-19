@@ -1,12 +1,31 @@
 @extends('layouts.dashboard')
 @section('content')
+@push('page-css')
+<link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+
+@endpush
+@if ($errors->any())
+
+<div class="alert alert-danger alert-dismissible " role="alert">
+
+    @if ($errors->kode_mapel)
+    mapel / kode mapel sudah ada
+    @endif
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 <div class="card">
     <div class="card-header d-flex">
         <h5 class="card-title flex-grow-1">
-            List Akun Guru
+            List Guru
         </h5>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-            data-bs-target="#modalCreate">Tambah</button>
+        <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#modalc"><i
+                class='bx bx-spreadsheet'></i> Tambah melalui file excel</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreate">Tambah
+            Manual</button>
     </div>
     <div class="card-body">
         <div class="text-wrap">
@@ -73,8 +92,8 @@
                 <div class="row">
                     <div class="col mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" id="nama" class="form-control" name="name"
-                            placeholder="masukan nama guru" autofocus required />
+                        <input type="text" id="nama" class="form-control" name="name" placeholder="masukan nama guru"
+                            autofocus required />
                     </div>
                 </div>
                 <div class="row">
@@ -91,7 +110,7 @@
                             <option value="#"> pilih role</option>
                             @foreach ($role as $item)
                             @if ($item->value == 'guru piket' || $item->value == 'siswa')
-                                
+
                             @else
                             <option value="{{ $item->value }}">{{ $item->value }}</option>
                             @endif
@@ -102,8 +121,8 @@
                 <div class="row">
                     <div class="col mb-3">
                         <label for="email" class="form-label">email</label>
-                        <input type="email" id="email" class="form-control" name="email"
-                            placeholder="email@test.test" required />
+                        <input type="email" id="email" class="form-control" name="email" placeholder="email@test.test"
+                            required />
                     </div>
                 </div>
                 <div class="row">
@@ -123,6 +142,41 @@
         </form>
     </div>
 </div>
+
+{{-- modal upload exce --}}
+<div class="modal fade" id="modalc" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="modal-content" action="{{ route('mapel.import') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-header">
+                <h5 class="modal-title text-capitaliza" id="modalUploadTitle">Upload file excel</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <label for="excel" class="form-label">file excel</label>
+                        <input type="file" id="excel" name="siswaExcel" class="form-control"
+                            placeholder="upload file excel" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p><i class='bx bx-info-circle'></i>Wajib menggunakan template, download file template <a
+                                href="{{ route('mapel.template') }}" class="btn-sm btn-info">Disini</a> </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <!-- Modal untuk update -->
 @forelse ($guruMapel as $item)
 <div class="modal fade" id="modalUpdate{{ $loop->iteration }}" tabindex="-1" aria-hidden="true">
@@ -162,4 +216,6 @@
 @empty
 
 @endforelse
+
+
 @endsection

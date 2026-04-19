@@ -73,6 +73,8 @@ Route::controller(UserGuruController::class)->middleware(['auth', 'role:admin'])
     Route::post('data-master/akun/guru/store','store')->name('akun.guru.store');
     Route::put('data-master/akun/guru/{guru}/update', 'update')->name('akun.guru.update');
     Route::delete('data-master/akun/guru/{guru}/destroy', 'destroy')->name('akun.guru.destroy');
+    Route::get('data-master/akun/template', 'template')->name('akun.guru.template');
+    Route::post('data-master/akun/template/import', 'import')->name('akun.guru.import');
 });
 Route::controller(GuruMapelController::class)->middleware(['auth','role:wakil kurikulum'])->group(function(){
     Route::get('pembagian-tugas-mengajar/guru-mapel/index','index')->name('gurumapel.index');
