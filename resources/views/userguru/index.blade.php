@@ -9,12 +9,12 @@
 @endpush
 @if ($errors->any())
 
-<div class="alert alert-danger alert-dismissible " role="alert">
 
-    @if ($errors->kode_mapel)
-    mapel / kode mapel sudah ada
-    @endif
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+@foreach ($errors->all() as $message)
+<div class="alert alert-danger alert-dismissible " role="alert">
+        {{ $message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    @endforeach
 </div>
 @endif
 <div class="card">
@@ -156,7 +156,7 @@
                 <div class="row mb-2">
                     <div class="col">
                         <label for="excel" class="form-label">file excel</label>
-                        <input type="file" id="excel" name="siswaExcel" class="form-control"
+                        <input type="file" id="excel" name="GuruExcel" class="form-control"
                             placeholder="upload file excel" />
                     </div>
                 </div>

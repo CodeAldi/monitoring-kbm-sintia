@@ -16,10 +16,10 @@ class UserGuruController extends Controller
     function import(Request $request)
     {
         $validatedData = $request->validate([
-            'siswaExcel' => 'required|file|extensions:xls,xlsx,csv',
+            'GuruExcel' => 'required|file|extensions:xls,xlsx,csv',
         ]);
         Excel::import(new GuruImport, $request->file('GuruExcel'));
-        return redirect()->route('guru.index')->with('success', 'Data mapel berhasil ditambah/update melalui file excel');
+        return redirect()->route('akun.guru.index')->with('success', 'Data mapel berhasil ditambah/update melalui file excel');
     }
     function template()
     {

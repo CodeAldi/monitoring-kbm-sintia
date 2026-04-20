@@ -2,20 +2,32 @@
 
 namespace App\Imports;
 
+use App\Enums\UserRole;
 use App\Models\User;
-use Maatwebsite\Excel\Concerns\ToModel;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class GuruImport implements ToModel
+class GuruImport implements ToCollection, WithHeadingRow
 {
-    /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
-    public function model(array $row)
+
+    public function collection(Collection $collection)
     {
-        return new User([
-            //
-        ]);
+        foreach ($collection as $key => $value) {
+            // dd($value);
+            $siswa[$key] = User::updateOrCreate(
+                [
+                    'nomor_induk' => $value['nomor_induk'],
+                ],[
+                    'name' => $value['name'],
+                    'nomor_induk' => $value['nomor_induk'],
+                    'email' => $value['email'],
+                    'password' => bcrypt($value['password']),
+                    
+                ]
+            );
+            $siswa[$key]->role = UserRole::GuruMapel;
+            $siswa[$key]->save();
+        }
     }
 }
