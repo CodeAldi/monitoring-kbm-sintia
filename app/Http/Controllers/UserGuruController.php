@@ -2,12 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Enums\UserRole;
+use App\Exports\GuruExport;
+use App\Imports\GuruImport;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class UserGuruController extends Controller
 {
+
+    function import(Request $request)
+    {
+        $validatedData = $request->validate([
+            'siswaExcel' => 'required|file|extensions:xls,xlsx,csv',
+        ]);
+        Excel::import(new GuruImport, $request->file('GuruExcel'));
+        return redirect()->route('guru.index')->with('success', 'Data mapel berhasil ditambah/update melalui file excel');
+    }
+    function template()
+    {
+        return Excel::download(new GuruExport, 'Guru.xlsx');
+    }
     function index() {
         $guruMapel = User::where('role','!=',UserRole::Admin)->get();
         // $guruPiket = User::where('role','like',UserRole::GuruPiket)->get();

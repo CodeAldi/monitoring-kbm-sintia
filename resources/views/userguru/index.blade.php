@@ -146,7 +146,7 @@
 {{-- modal upload exce --}}
 <div class="modal fade" id="modalc" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
-        <form class="modal-content" action="{{ route('mapel.import') }}" method="POST" enctype="multipart/form-data">
+        <form class="modal-content" action="{{ route('akun.guru.import') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="modal-header">
                 <h5 class="modal-title text-capitaliza" id="modalUploadTitle">Upload file excel</h5>
@@ -163,7 +163,7 @@
                 <div class="row">
                     <div class="col">
                         <p><i class='bx bx-info-circle'></i>Wajib menggunakan template, download file template <a
-                                href="{{ route('mapel.template') }}" class="btn-sm btn-info">Disini</a> </p>
+                                href="{{ route('akun.guru.template') }}" class="btn-sm btn-info">Disini</a> </p>
                     </div>
                 </div>
             </div>
